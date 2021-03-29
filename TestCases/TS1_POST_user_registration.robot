@@ -4,16 +4,17 @@ Library     Collections
 Library     RequestsLibrary
 Resource    ../Bindings/keywords.robot
 
+
 *** Variables ***
 ${base_url}     https://demoqa.com
-${userName}     testuser2s
+${userName}     testussser2s
 ${password}     1234qweRE!
 *** Test Cases ***
 User_registration_with_valid_data
 
     create session      user_registration       ${base_url}
 
-    ${response}         Input valid username and password  ${userName}  ${password}
+    ${response}         Input username and password  ${userName}  ${password}
 
     log to console      ${response.status_code}
     log to console      ${response.content}
@@ -31,7 +32,7 @@ User_registration_with_empty_username_field
 
     Create Session      user_registration       ${base_url}
 
-    ${response}         Input valid username and password  ${EMPTY}  ${password}
+    ${response}         Input username and password  ${EMPTY}  ${password}
 
     log to console     ${response.status_code}
     log to console     ${response.content}
@@ -48,7 +49,7 @@ User_registration_with_empty_password_field
 
     create session      user_registration       ${base_url}
 
-    ${response}         Input valid username and password  ${userName}  ${EMPTY}
+    ${response}         Input username and password  ${userName}  ${EMPTY}
 
     log to console      ${response.status_code}
     log to console      ${response.content}
@@ -65,7 +66,7 @@ User_registration_with_existing_user
 
     create session      user_registration       ${base_url}
 
-    ${response}         Input valid username and password  ${userName}  ${password}
+    ${response}         Input username and password  ${userName}  ${password}
 
     log to console      ${response.status_code}
     log to console      ${response.content}
@@ -81,7 +82,7 @@ User_registration_with_invalid_password
 
     create session      user_registration       ${base_url}
 
-    ${response}         Input valid username and password  ${userName}  215648sa
+    ${response}         Input username and password  ${userName}  215648sa
 
     log to console      ${response.status_code}
     log to console      ${response.content}
