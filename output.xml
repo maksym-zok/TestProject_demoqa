@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0 (Python 3.9.2 on win32)" generated="20210329 11:39:41.458" rpa="false" schemaversion="2">
+<suite id="s1" name="TC2 POST request" source="C:\Users\maksy\PycharmProjects\TestProject\TestCases\TC2_POST_request.robot">
+<test id="s1-t1" name="User_registration_with_valid_data">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>user_registration</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210329 11:39:41.685" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210329 11:39:41.685" endtime="20210329 11:39:41.686"/>
+</kw>
+<kw name="Input valid username and password" library="keywords">
+<var>${response}</var>
+<arg>${userName}</arg>
+<arg>${password}</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210329 11:39:41.687" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20210329 11:39:41.687" endtime="20210329 11:39:41.687"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>user_registration</arg>
+<arg>/Account/v1/User</arg>
+<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20210329 11:39:41.687" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210329 11:39:41.940" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
+ path_url=/Account/v1/User 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '52'} 
+ body=b'{"userName": "testuser2s", "password": "1234qweRE!"}' 
+ </msg>
+<msg timestamp="20210329 11:39:41.940" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
+ status=201, reason=Created 
+ headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 08:39:41 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '84', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"54-HZyjvup1cbbKliSIvSArlVdy1mE"'} 
+ body={"userID":"ca7ceb65-e43b-435a-bcc9-39c3b9d5ca54","username":"testuser2s","books":[]} 
+ </msg>
+<msg timestamp="20210329 11:39:41.940" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20210329 11:39:41.941" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:41.687" endtime="20210329 11:39:41.941"/>
+</kw>
+<msg timestamp="20210329 11:39:41.942" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:41.686" endtime="20210329 11:39:41.942"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:41.942" endtime="20210329 11:39:41.943"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:41.944" endtime="20210329 11:39:41.945"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:41.945" endtime="20210329 11:39:41.947"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:41.948" level="INFO">${status_code} = 201</msg>
+<status status="PASS" starttime="20210329 11:39:41.947" endtime="20210329 11:39:41.948"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>201</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20210329 11:39:41.949" endtime="20210329 11:39:41.949"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:41.950" level="INFO">${res_body} = {"userID":"ca7ceb65-e43b-435a-bcc9-39c3b9d5ca54","username":"testuser2s","books":[]}</msg>
+<status status="PASS" starttime="20210329 11:39:41.950" endtime="20210329 11:39:41.951"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>${userName}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20210329 11:39:41.951" endtime="20210329 11:39:41.952"/>
+</kw>
+<status status="PASS" starttime="20210329 11:39:41.684" endtime="20210329 11:39:41.952"/>
+</test>
+<test id="s1-t2" name="User_registration_with_empty_username_field">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>user_registration</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210329 11:39:41.957" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210329 11:39:41.957" endtime="20210329 11:39:41.957"/>
+</kw>
+<kw name="Input valid username and password" library="keywords">
+<var>${response}</var>
+<arg>${EMPTY}</arg>
+<arg>${password}</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210329 11:39:41.960" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20210329 11:39:41.960" endtime="20210329 11:39:41.960"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>user_registration</arg>
+<arg>/Account/v1/User</arg>
+<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20210329 11:39:41.960" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210329 11:39:42.163" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
+ path_url=/Account/v1/User 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '42'} 
+ body=b'{"userName": "", "password": "1234qweRE!"}' 
+ </msg>
+<msg timestamp="20210329 11:39:42.163" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 08:39:42 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '59', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"3b-kfIAtNk1nsLmMi3OoOPrbSi9YOU"'} 
+ body={"code":"1200","message":"UserName and Password required."} 
+ </msg>
+<msg timestamp="20210329 11:39:42.163" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20210329 11:39:42.164" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:41.960" endtime="20210329 11:39:42.164"/>
+</kw>
+<msg timestamp="20210329 11:39:42.164" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:41.959" endtime="20210329 11:39:42.164"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.165" endtime="20210329 11:39:42.166"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.167" endtime="20210329 11:39:42.168"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.169" endtime="20210329 11:39:42.170"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:42.171" level="INFO">${status_code} = 400</msg>
+<status status="PASS" starttime="20210329 11:39:42.171" endtime="20210329 11:39:42.172"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>400</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20210329 11:39:42.172" endtime="20210329 11:39:42.173"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_content}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:42.175" level="INFO">${res_content} = {"code":"1200","message":"UserName and Password required."}</msg>
+<status status="PASS" starttime="20210329 11:39:42.174" endtime="20210329 11:39:42.175"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_content}</arg>
+<arg>UserName and Password required.</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20210329 11:39:42.175" endtime="20210329 11:39:42.175"/>
+</kw>
+<status status="PASS" starttime="20210329 11:39:41.956" endtime="20210329 11:39:42.176"/>
+</test>
+<test id="s1-t3" name="User_registration_with_empty_password_field">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>user_registration</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210329 11:39:42.179" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210329 11:39:42.178" endtime="20210329 11:39:42.179"/>
+</kw>
+<kw name="Input valid username and password" library="keywords">
+<var>${response}</var>
+<arg>${userName}</arg>
+<arg>${EMPTY}</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210329 11:39:42.181" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20210329 11:39:42.180" endtime="20210329 11:39:42.181"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>user_registration</arg>
+<arg>/Account/v1/User</arg>
+<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20210329 11:39:42.181" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210329 11:39:42.406" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
+ path_url=/Account/v1/User 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '42'} 
+ body=b'{"userName": "testuser2s", "password": ""}' 
+ </msg>
+<msg timestamp="20210329 11:39:42.406" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 08:39:42 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '59', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"3b-kfIAtNk1nsLmMi3OoOPrbSi9YOU"'} 
+ body={"code":"1200","message":"UserName and Password required."} 
+ </msg>
+<msg timestamp="20210329 11:39:42.406" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20210329 11:39:42.407" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:42.181" endtime="20210329 11:39:42.407"/>
+</kw>
+<msg timestamp="20210329 11:39:42.407" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:42.179" endtime="20210329 11:39:42.407"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.407" endtime="20210329 11:39:42.408"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.409" endtime="20210329 11:39:42.410"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.411" endtime="20210329 11:39:42.412"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:42.413" level="INFO">${status_code} = 400</msg>
+<status status="PASS" starttime="20210329 11:39:42.413" endtime="20210329 11:39:42.414"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>400</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20210329 11:39:42.414" endtime="20210329 11:39:42.414"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_content}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:42.416" level="INFO">${res_content} = {"code":"1200","message":"UserName and Password required."}</msg>
+<status status="PASS" starttime="20210329 11:39:42.415" endtime="20210329 11:39:42.416"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_content}</arg>
+<arg>UserName and Password required.</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20210329 11:39:42.416" endtime="20210329 11:39:42.417"/>
+</kw>
+<status status="PASS" starttime="20210329 11:39:42.178" endtime="20210329 11:39:42.417"/>
+</test>
+<test id="s1-t4" name="User_registration_with_existing_user">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>user_registration</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210329 11:39:42.420" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210329 11:39:42.419" endtime="20210329 11:39:42.420"/>
+</kw>
+<kw name="Input valid username and password" library="keywords">
+<var>${response}</var>
+<arg>${userName}</arg>
+<arg>${password}</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210329 11:39:42.422" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20210329 11:39:42.421" endtime="20210329 11:39:42.422"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>user_registration</arg>
+<arg>/Account/v1/User</arg>
+<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20210329 11:39:42.422" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210329 11:39:42.630" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
+ path_url=/Account/v1/User 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '52'} 
+ body=b'{"userName": "testuser2s", "password": "1234qweRE!"}' 
+ </msg>
+<msg timestamp="20210329 11:39:42.630" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
+ status=406, reason=Not Acceptable 
+ headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 08:39:42 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '40', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"28-Ol+1T9TtJMfkxjesktiJwJPAuBU"'} 
+ body={"code":"1204","message":"User exists!"} 
+ </msg>
+<msg timestamp="20210329 11:39:42.630" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20210329 11:39:42.631" level="INFO">${response} = &lt;Response [406]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:42.422" endtime="20210329 11:39:42.631"/>
+</kw>
+<msg timestamp="20210329 11:39:42.631" level="INFO">${response} = &lt;Response [406]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:42.420" endtime="20210329 11:39:42.631"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.632" endtime="20210329 11:39:42.633"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.633" endtime="20210329 11:39:42.634"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.635" endtime="20210329 11:39:42.636"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:42.638" level="INFO">${status_code} = 406</msg>
+<status status="PASS" starttime="20210329 11:39:42.637" endtime="20210329 11:39:42.638"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>406</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20210329 11:39:42.638" endtime="20210329 11:39:42.639"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_content}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:42.641" level="INFO">${res_content} = {"code":"1204","message":"User exists!"}</msg>
+<status status="PASS" starttime="20210329 11:39:42.640" endtime="20210329 11:39:42.641"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_content}</arg>
+<arg>User exists!</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20210329 11:39:42.641" endtime="20210329 11:39:42.642"/>
+</kw>
+<status status="PASS" starttime="20210329 11:39:42.418" endtime="20210329 11:39:42.642"/>
+</test>
+<test id="s1-t5" name="User_registration_with_invalid_password">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>user_registration</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20210329 11:39:42.645" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210329 11:39:42.644" endtime="20210329 11:39:42.645"/>
+</kw>
+<kw name="Input valid username and password" library="keywords">
+<var>${response}</var>
+<arg>${userName}</arg>
+<arg>215648sa</arg>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20210329 11:39:42.646" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20210329 11:39:42.646" endtime="20210329 11:39:42.646"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>user_registration</arg>
+<arg>/Account/v1/User</arg>
+<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20210329 11:39:42.647" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210329 11:39:42.871" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
+ path_url=/Account/v1/User 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '50'} 
+ body=b'{"userName": "testuser2s", "password": "215648sa"}' 
+ </msg>
+<msg timestamp="20210329 11:39:42.871" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 08:39:42 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '230', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"e6-Suxub+fxI99/3YEWz5cjyd3KlvQ"'} 
+ body={"code":"1300","message":"Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer."} 
+ </msg>
+<msg timestamp="20210329 11:39:42.871" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20210329 11:39:42.872" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:42.646" endtime="20210329 11:39:42.872"/>
+</kw>
+<msg timestamp="20210329 11:39:42.872" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20210329 11:39:42.645" endtime="20210329 11:39:42.872"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.873" endtime="20210329 11:39:42.874"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.874" endtime="20210329 11:39:42.875"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20210329 11:39:42.876" endtime="20210329 11:39:42.877"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:42.879" level="INFO">${status_code} = 400</msg>
+<status status="PASS" starttime="20210329 11:39:42.878" endtime="20210329 11:39:42.879"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>400</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20210329 11:39:42.879" endtime="20210329 11:39:42.880"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_content}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20210329 11:39:42.881" level="INFO">${res_content} = {"code":"1300","message":"Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be...</msg>
+<status status="PASS" starttime="20210329 11:39:42.880" endtime="20210329 11:39:42.881"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_content}</arg>
+<arg>Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20210329 11:39:42.881" endtime="20210329 11:39:42.882"/>
+</kw>
+<status status="PASS" starttime="20210329 11:39:42.644" endtime="20210329 11:39:42.882"/>
+</test>
+<status status="PASS" starttime="20210329 11:39:41.460" endtime="20210329 11:39:42.884"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="0" skip="0" id="s1" name="TC2 POST request">TC2 POST request</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20210329 11:39:41.687" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210329 11:39:41.960" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210329 11:39:42.181" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210329 11:39:42.422" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210329 11:39:42.647" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>
