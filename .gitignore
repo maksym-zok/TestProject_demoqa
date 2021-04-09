@@ -1,5 +1,6 @@
 #Robot
 *.png
+output.xml
 output.html
 report.html
 log.html
