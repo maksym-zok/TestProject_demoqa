@@ -41,7 +41,6 @@ Text Box testing with empty username field
 Text Box testing with empty current address field
     input text      id:userName                 ${valid_username}
     input text      id:userEmail                ${valid_email}
-#    input text      id:currentAddress           ${EMPTY}
     input text      id:permanentAddress         ${valid_per_address}
     click element   id:submit
     element should not be visible  //p[@id="currentAddress"]
@@ -50,6 +49,5 @@ Text Box testing with empty permanent address field
     input text      id:userName                 ${valid_username}
     input text      id:userEmail                ${valid_email}
     input text      id:currentAddress           ${valid_cur_address}
-#    input text      id:permanentAddress         ${EMPTY}
     click element   id:submit
     element should not be visible  //p[@id="permanentAddress"]

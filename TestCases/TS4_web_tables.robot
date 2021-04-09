@@ -9,15 +9,14 @@ Test Teardown           close browser
 
 *** Test Cases ***
 Check whether table search works
-    ${path_first_name_of_list}  set variable    xpath:(//div[@class="rt-tr -odd"]/div[@class="rt-td"])[1]
-    ${first_name_of_list}   get text    ${path_first_name_of_list}
-    input text      id:searchBox    ${first_name_of_list}
+    ${path_first_name_of_list}          set variable        xpath:(//div[@class="rt-tr -odd"]/div[@class="rt-td"])[1]
+    ${first_name_of_list}               get text            ${path_first_name_of_list}
+    input text                          id:searchBox        ${first_name_of_list}
     element should contain  ${path_first_name_of_list}     ${first_name_of_list}
 
 Check whether user able to add valid data to table
-    Add new record  ${id:firstName}    ${id:lastName}     ${id:userEmail}    ${id:age}  ${id:salary}   ${id:department}
+    Add new record          ${id:firstName}    ${id:lastName}     ${id:userEmail}    ${id:age}  ${id:salary}   ${id:department}
     element text should be  //div[@class='rt-tr-group']/div/div[starts-with(.,'${id:firstName}')]   ${id:firstName}
-    emp
 
 Check whether user not be able to add invalid data to table
     Add new record  ${id:firstName}    ${id:lastName}     ${id:userEmail}    ${invalid_age}  ${id:salary}   ${id:department}

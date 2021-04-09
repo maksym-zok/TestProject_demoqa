@@ -10,7 +10,7 @@ Test Teardown           close browser
 *** Test Cases ***
 Check whether 2 iframes are present on page
     ${frames}                       get element count           //iframe
-    log to console                  ${frames}
+    log to console                  ${frames} frames are on the page
     ${ex_frames}                    set variable                2
     should be equal as integers     ${frames}                   ${ex_frames}
 
@@ -20,6 +20,7 @@ Check whether iframes not empty
     unselect frame
     select frame                    frame2
     current frame should contain    This is a sample page
+    log to console                  iframes are not empty
 
 Check whether iframes have required size
     ${frame1_width}                 get element attribute       //iframe[@id="frame1"]  width

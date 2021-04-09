@@ -9,7 +9,7 @@ Test Setup              Start browser and maximaze  https://demoqa.com/checkbox
 Test Teardown           close browser
 
 *** Test Cases ***
-Check whether checkboxes clickable
+Check whether checkboxes are clickable
     FOR    ${i}    IN   1  2  3  4  5  6
            click element   xpath:(//span[@class="rct-text"]/*[@class="rct-collapse rct-collapse-btn"])[${i}]
            Exit For Loop If    ${i} == 6
