@@ -1,463 +1,1487 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.0 (Python 3.9.2 on win32)" generated="20210329 14:09:17.998" rpa="false" schemaversion="2">
-<suite id="s1" name="TS1 POST user registration" source="C:\Users\maksy\PycharmProjects\TestProject\TestCases\TS1_POST_user_registration.robot">
-<test id="s1-t1" name="User_registration_with_valid_data">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>user_registration</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20210329 14:09:18.196" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20210329 14:09:18.195" endtime="20210329 14:09:18.196"/>
+<robot generator="Robot 4.0 (Python 3.9.2 on win32)" generated="20210409 13:05:39.453" rpa="false" schemaversion="2">
+<suite id="s1" name="TS10 practice form" source="C:\Users\maksy\PycharmProjects\TestProject_1\TestCases\TS10_practice_form.robot">
+<test id="s1-t1" name="Check practice form works with valid data">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:05:39.808" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:05:39.808" endtime="20210409 13:05:42.859"/>
 </kw>
-<kw name="Input username and password" library="keywords">
-<var>${response}</var>
-<arg>${userName}</arg>
-<arg>${password}</arg>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20210329 14:09:18.198" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20210329 14:09:18.197" endtime="20210329 14:09:18.198"/>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:05:42.859" endtime="20210409 13:05:42.982"/>
 </kw>
-<kw name="Post Request" library="RequestsLibrary">
-<var>${response}</var>
-<arg>user_registration</arg>
-<arg>/Account/v1/User</arg>
-<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
-<arg>headers=${header}</arg>
-<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
-<msg timestamp="20210329 14:09:18.198" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20210329 14:09:18.463" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
- path_url=/Account/v1/User 
- headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '54'} 
- body=b'{"userName": "testussser2s", "password": "1234qweRE!"}' 
- </msg>
-<msg timestamp="20210329 14:09:18.463" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
- status=406, reason=Not Acceptable 
- headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 11:09:18 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '40', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"28-Ol+1T9TtJMfkxjesktiJwJPAuBU"'} 
- body={"code":"1204","message":"User exists!"} 
- </msg>
-<msg timestamp="20210329 14:09:18.463" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20210329 14:09:18.463" level="INFO">${response} = &lt;Response [406]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:18.198" endtime="20210329 14:09:18.463"/>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:05:42.999" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:05:42.986" endtime="20210409 13:05:43.001"/>
 </kw>
-<msg timestamp="20210329 14:09:18.464" level="INFO">${response} = &lt;Response [406]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:18.197" endtime="20210329 14:09:18.464"/>
+<status status="PASS" starttime="20210409 13:05:39.807" endtime="20210409 13:05:43.003"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:18.465" endtime="20210329 14:09:18.466"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
+<arg>${id:firstName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:43.006" level="INFO">Typing text 'Mariana' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:05:43.005" endtime="20210409 13:05:43.144"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:18.467" endtime="20210329 14:09:18.468"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
+<arg>${id:lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:43.145" level="INFO">Typing text 'Zenzen' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:05:43.145" endtime="20210409 13:05:43.229"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:18.469" endtime="20210329 14:09:18.470"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${id:userEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:43.229" level="INFO">Typing text 'neuzelivsamom@gmail.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:05:43.229" endtime="20210409 13:05:43.345"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20210329 14:09:18.472" level="INFO">${status_code} = 406</msg>
-<status status="PASS" starttime="20210329 14:09:18.471" endtime="20210329 14:09:18.472"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//label[text()='Male']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:43.346" level="INFO">Clicking element '//label[text()='Male']'.</msg>
+<status status="PASS" starttime="20210409 13:05:43.345" endtime="20210409 13:05:43.400"/>
 </kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>201</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<msg timestamp="20210329 14:09:18.474" level="FAIL">406 != 201</msg>
-<status status="FAIL" starttime="20210329 14:09:18.473" endtime="20210329 14:09:18.474"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${valid_phone_number}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:43.401" level="INFO">Typing text '0964654654' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:05:43.400" endtime="20210409 13:05:43.490"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${res_body}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20210329 14:09:18.475" endtime="20210329 14:09:18.475"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:dateOfBirthInput</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:43.490" level="INFO">Clicking element 'id:dateOfBirthInput'.</msg>
+<status status="PASS" starttime="20210409 13:05:43.490" endtime="20210409 13:05:43.645"/>
 </kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${res_body}</arg>
-<arg>${userName}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="NOT RUN" starttime="20210329 14:09:18.475" endtime="20210329 14:09:18.475"/>
+<kw name="Select month" library="keywords">
+<arg>July</arg>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>class:react-datepicker__month-select</arg>
+<arg>${month}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20210409 13:05:43.646" level="INFO">Selecting options from selection list 'class:react-datepicker__month-select' by label July.</msg>
+<status status="PASS" starttime="20210409 13:05:43.646" endtime="20210409 13:05:43.751"/>
 </kw>
-<status status="FAIL" starttime="20210329 14:09:18.195" endtime="20210329 14:09:18.476">406 != 201</status>
+<status status="PASS" starttime="20210409 13:05:43.645" endtime="20210409 13:05:43.751"/>
+</kw>
+<kw name="Select year" library="keywords">
+<arg>1993</arg>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>class:react-datepicker__year-select</arg>
+<arg>${year}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20210409 13:05:43.752" level="INFO">Selecting options from selection list 'class:react-datepicker__year-select' by label 1993.</msg>
+<status status="PASS" starttime="20210409 13:05:43.752" endtime="20210409 13:05:43.837"/>
+</kw>
+<status status="PASS" starttime="20210409 13:05:43.752" endtime="20210409 13:05:43.837"/>
+</kw>
+<kw name="Select day" library="keywords">
+<arg>21st</arg>
+<arg>July</arg>
+<arg>1993</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[@aria-label="Choose Wednesday, ${month} ${day}, ${year}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:43.839" level="INFO">Clicking element 'xpath://div[@aria-label="Choose Wednesday, July 21st, 1993"]'.</msg>
+<status status="PASS" starttime="20210409 13:05:43.839" endtime="20210409 13:05:43.900"/>
+</kw>
+<status status="PASS" starttime="20210409 13:05:43.838" endtime="20210409 13:05:43.900"/>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>id:dateOfBirthInput</arg>
+<arg>value</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20210409 13:05:43.914" level="INFO">${value} = 21 Jul 1993</msg>
+<status status="PASS" starttime="20210409 13:05:43.901" endtime="20210409 13:05:43.914"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${value}</arg>
+<arg>21 Jul 1993</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:05:43.915" endtime="20210409 13:05:43.916"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:dateOfBirthInput</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20210409 13:05:43.917" level="INFO">Sending key(s) ('ENTER',) to id:dateOfBirthInput element.</msg>
+<msg timestamp="20210409 13:05:44.305" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20210409 13:05:44.306" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20210409 13:05:43.916" endtime="20210409 13:05:44.317"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:subjectsInput</arg>
+<arg>Physics</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:44.318" level="INFO">Typing text 'Physics' into text field 'id:subjectsInput'.</msg>
+<status status="PASS" starttime="20210409 13:05:44.318" endtime="20210409 13:05:44.436"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:subjectsInput</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20210409 13:05:44.436" level="INFO">Sending key(s) ('ENTER',) to id:subjectsInput element.</msg>
+<msg timestamp="20210409 13:05:44.844" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20210409 13:05:44.844" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20210409 13:05:44.436" endtime="20210409 13:05:44.864"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://label[@for="hobbies-checkbox-1"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:44.866" level="INFO">Clicking element 'xpath://label[@for="hobbies-checkbox-1"]'.</msg>
+<status status="PASS" starttime="20210409 13:05:44.865" endtime="20210409 13:05:44.925"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://label[@for="hobbies-checkbox-2"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:44.926" level="INFO">Clicking element 'xpath://label[@for="hobbies-checkbox-2"]'.</msg>
+<status status="PASS" starttime="20210409 13:05:44.925" endtime="20210409 13:05:44.979"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://label[@for="hobbies-checkbox-3"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:44.980" level="INFO">Clicking element 'xpath://label[@for="hobbies-checkbox-3"]'.</msg>
+<status status="PASS" starttime="20210409 13:05:44.980" endtime="20210409 13:05:45.036"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${UploadFiletest}</arg>
+<arg>60s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20210409 13:05:45.037" endtime="20210409 13:05:45.048"/>
+</kw>
+<kw name="Choose File" library="SeleniumLibrary">
+<arg>${UploadFiletest}</arg>
+<arg>${AddFile}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<msg timestamp="20210409 13:05:45.050" level="INFO">Sending D:\download.jpg to browser.</msg>
+<status status="PASS" starttime="20210409 13:05:45.050" endtime="20210409 13:05:45.093"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:currentAddress</arg>
+<arg>${valid_cur_address}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:45.094" level="INFO">Typing text 'In the middle of nowhere' into text field 'id:currentAddress'.</msg>
+<status status="PASS" starttime="20210409 13:05:45.094" endtime="20210409 13:05:45.210"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:react-select-3-input</arg>
+<arg>NCR</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:45.211" level="INFO">Typing text 'NCR' into text field 'id:react-select-3-input'.</msg>
+<status status="PASS" starttime="20210409 13:05:45.211" endtime="20210409 13:05:45.323"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:react-select-3-input</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20210409 13:05:45.323" level="INFO">Sending key(s) ('ENTER',) to id:react-select-3-input element.</msg>
+<msg timestamp="20210409 13:05:45.612" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20210409 13:05:45.612" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20210409 13:05:45.323" endtime="20210409 13:05:45.633"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:react-select-4-input</arg>
+<arg>Delhi</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:45.634" level="INFO">Typing text 'Delhi' into text field 'id:react-select-4-input'.</msg>
+<status status="PASS" starttime="20210409 13:05:45.634" endtime="20210409 13:05:45.756"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id:react-select-4-input</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20210409 13:05:45.756" level="INFO">Sending key(s) ('ENTER',) to id:react-select-4-input element.</msg>
+<msg timestamp="20210409 13:05:46.045" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20210409 13:05:46.045" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20210409 13:05:45.756" endtime="20210409 13:05:46.071"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:46.072" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.071" endtime="20210409 13:05:46.156"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[1]/td)[2]</arg>
+<arg>${id:firstName}</arg>
+<arg>${id:lastName}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.191" level="INFO">Element 'xpath:((//tbody/tr)[1]/td)[2]' contains text 'Mariana'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.157" endtime="20210409 13:05:46.191"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[2]/td)[2]</arg>
+<arg>${id:userEmail}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.223" level="INFO">Element 'xpath:((//tbody/tr)[2]/td)[2]' contains text 'neuzelivsamom@gmail.com'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.191" endtime="20210409 13:05:46.223"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[3]/td)[2]</arg>
+<arg>Male</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.251" level="INFO">Element 'xpath:((//tbody/tr)[3]/td)[2]' contains text 'Male'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.224" endtime="20210409 13:05:46.251"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[4]/td)[2]</arg>
+<arg>${valid_phone_number}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.276" level="INFO">Element 'xpath:((//tbody/tr)[4]/td)[2]' contains text '0964654654'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.252" endtime="20210409 13:05:46.276"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[5]/td)[2]</arg>
+<arg>21</arg>
+<arg>July</arg>
+<arg>1993</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.305" level="INFO">Element 'xpath:((//tbody/tr)[5]/td)[2]' contains text '21'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.277" endtime="20210409 13:05:46.306"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[6]/td)[2]</arg>
+<arg>Physics</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.330" level="INFO">Element 'xpath:((//tbody/tr)[6]/td)[2]' contains text 'Physics'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.306" endtime="20210409 13:05:46.330"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[7]/td)[2]</arg>
+<arg>Sports</arg>
+<arg>Reading</arg>
+<arg>Music</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.357" level="INFO">Element 'xpath:((//tbody/tr)[7]/td)[2]' contains text 'Sports'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.331" endtime="20210409 13:05:46.357"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[8]/td)[2]</arg>
+<arg>${filename}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.384" level="INFO">Element 'xpath:((//tbody/tr)[8]/td)[2]' contains text 'download.jpg'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.357" endtime="20210409 13:05:46.385"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[9]/td)[2]</arg>
+<arg>${valid_cur_address}</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.410" level="INFO">Element 'xpath:((//tbody/tr)[9]/td)[2]' contains text 'In the middle of nowhere'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.385" endtime="20210409 13:05:46.411"/>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<arg>xpath:((//tbody/tr)[10]/td)[2]</arg>
+<arg>NCR</arg>
+<arg>Delhi</arg>
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20210409 13:05:46.437" level="INFO">Element 'xpath:((//tbody/tr)[10]/td)[2]' contains text 'NCR'.</msg>
+<status status="PASS" starttime="20210409 13:05:46.411" endtime="20210409 13:05:46.437"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:05:46.437" endtime="20210409 13:05:48.602"/>
+</kw>
+<status status="PASS" starttime="20210409 13:05:39.807" endtime="20210409 13:05:48.602"/>
 </test>
-<test id="s1-t2" name="User_registration_with_empty_username_field">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>user_registration</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20210329 14:09:18.479" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20210329 14:09:18.479" endtime="20210329 14:09:18.480"/>
+<test id="s1-t2" name="Check whether user is not able to submit form with empty firstname field">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:05:48.606" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:05:48.606" endtime="20210409 13:05:51.588"/>
 </kw>
-<kw name="Input username and password" library="keywords">
-<var>${response}</var>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:05:51.588" endtime="20210409 13:05:51.701"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:05:51.705" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:05:51.701" endtime="20210409 13:05:51.705"/>
+</kw>
+<status status="PASS" starttime="20210409 13:05:48.606" endtime="20210409 13:05:51.705"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
 <arg>${EMPTY}</arg>
-<arg>${password}</arg>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20210329 14:09:18.481" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20210329 14:09:18.481" endtime="20210329 14:09:18.481"/>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:51.706" level="INFO">Typing text '' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:05:51.705" endtime="20210409 13:05:51.788"/>
 </kw>
-<kw name="Post Request" library="RequestsLibrary">
-<var>${response}</var>
-<arg>user_registration</arg>
-<arg>/Account/v1/User</arg>
-<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
-<arg>headers=${header}</arg>
-<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
-<msg timestamp="20210329 14:09:18.482" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20210329 14:09:18.699" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
- path_url=/Account/v1/User 
- headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '42'} 
- body=b'{"userName": "", "password": "1234qweRE!"}' 
- </msg>
-<msg timestamp="20210329 14:09:18.700" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
- status=400, reason=Bad Request 
- headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 11:09:18 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '59', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"3b-kfIAtNk1nsLmMi3OoOPrbSi9YOU"'} 
- body={"code":"1200","message":"UserName and Password required."} 
- </msg>
-<msg timestamp="20210329 14:09:18.700" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20210329 14:09:18.701" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:18.482" endtime="20210329 14:09:18.701"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
+<arg>${id:lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:51.789" level="INFO">Typing text 'Zenzen' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:05:51.788" endtime="20210409 13:05:51.898"/>
 </kw>
-<msg timestamp="20210329 14:09:18.702" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:18.480" endtime="20210329 14:09:18.702"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${id:userEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:51.899" level="INFO">Typing text 'neuzelivsamom@gmail.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:05:51.899" endtime="20210409 13:05:52.027"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:18.703" endtime="20210329 14:09:18.706"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//label[text()='Male']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:52.029" level="INFO">Clicking element '//label[text()='Male']'.</msg>
+<status status="PASS" starttime="20210409 13:05:52.028" endtime="20210409 13:05:52.086"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:18.707" endtime="20210329 14:09:18.710"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${valid_phone_number}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:52.087" level="INFO">Typing text '0964654654' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:05:52.087" endtime="20210409 13:05:52.188"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:18.712" endtime="20210329 14:09:18.715"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:52.189" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:05:52.189" endtime="20210409 13:05:52.258"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20210329 14:09:18.718" level="INFO">${status_code} = 400</msg>
-<status status="PASS" starttime="20210329 14:09:18.716" endtime="20210329 14:09:18.718"/>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>//div[@class='modal-content']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20210409 13:05:52.275" level="INFO">Element '//div[@class='modal-content']' did not exist.</msg>
+<status status="PASS" starttime="20210409 13:05:52.259" endtime="20210409 13:05:52.275"/>
 </kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>400</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20210329 14:09:18.719" endtime="20210329 14:09:18.720"/>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//form[@class='was-validated']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20210409 13:05:52.275" endtime="20210409 13:05:52.290"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${res_content}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20210329 14:09:18.723" level="INFO">${res_content} = {"code":"1200","message":"UserName and Password required."}</msg>
-<status status="PASS" starttime="20210329 14:09:18.721" endtime="20210329 14:09:18.723"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210409 13:05:53.295" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210409 13:05:52.290" endtime="20210409 13:05:53.295"/>
 </kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${res_content}</arg>
-<arg>UserName and Password required.</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20210329 14:09:18.724" endtime="20210329 14:09:18.725"/>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${first_name_color}</var>
+<arg>id:firstName</arg>
+<arg>border-color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20210409 13:05:53.311" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="a89660708d8ad024a8604f4cd2c9ea63", element="aa8ab0a6-0678-4971-8593-e35724bd2961")&gt;</msg>
+<status status="PASS" starttime="20210409 13:05:53.297" endtime="20210409 13:05:53.311"/>
 </kw>
-<status status="PASS" starttime="20210329 14:09:18.478" endtime="20210329 14:09:18.726"/>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210409 13:05:53.328" level="INFO">${prop_val} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:05:53.311" endtime="20210409 13:05:53.328"/>
+</kw>
+<msg timestamp="20210409 13:05:53.329" level="INFO">${first_name_color} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:05:53.296" endtime="20210409 13:05:53.329"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${first_name_color}</arg>
+<arg>${rgb_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:05:53.330" endtime="20210409 13:05:53.330"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:05:53.332" endtime="20210409 13:05:55.500"/>
+</kw>
+<status status="PASS" starttime="20210409 13:05:48.605" endtime="20210409 13:05:55.501"/>
 </test>
-<test id="s1-t3" name="User_registration_with_empty_password_field">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>user_registration</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20210329 14:09:18.732" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20210329 14:09:18.731" endtime="20210329 14:09:18.732"/>
+<test id="s1-t3" name="Check whether user is not able to submit form with a Space in firstname field">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:05:55.508" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:05:55.507" endtime="20210409 13:05:58.625"/>
 </kw>
-<kw name="Input username and password" library="keywords">
-<var>${response}</var>
-<arg>${userName}</arg>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:05:58.625" endtime="20210409 13:05:58.749"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:05:58.754" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:05:58.749" endtime="20210409 13:05:58.754"/>
+</kw>
+<status status="PASS" starttime="20210409 13:05:55.506" endtime="20210409 13:05:58.754"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
+<arg>${SPACE}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:58.755" level="INFO">Typing text ' ' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:05:58.755" endtime="20210409 13:05:58.841"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
+<arg>${id:lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:58.842" level="INFO">Typing text 'Zenzen' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:05:58.842" endtime="20210409 13:05:58.928"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${id:userEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:58.929" level="INFO">Typing text 'neuzelivsamom@gmail.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:05:58.928" endtime="20210409 13:05:59.035"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//label[text()='Male']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:59.036" level="INFO">Clicking element '//label[text()='Male']'.</msg>
+<status status="PASS" starttime="20210409 13:05:59.036" endtime="20210409 13:05:59.090"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${valid_phone_number}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:59.091" level="INFO">Typing text '0964654654' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:05:59.090" endtime="20210409 13:05:59.178"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:05:59.178" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:05:59.178" endtime="20210409 13:05:59.251"/>
+</kw>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>//div[@class='modal-content']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210409 13:05:59.722" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-31.png"&gt;&lt;img src="selenium-screenshot-31.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20210409 13:05:59.277" endtime="20210409 13:05:59.722"/>
+</kw>
+<msg timestamp="20210409 13:05:59.723" level="FAIL">The element '//div[@class='modal-content']' should not be visible, but it is.</msg>
+<status status="FAIL" starttime="20210409 13:05:59.251" endtime="20210409 13:05:59.723"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//form[@class='was-validated']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20210409 13:05:59.724" endtime="20210409 13:05:59.724"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20210409 13:05:59.724" endtime="20210409 13:05:59.724"/>
+</kw>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${first_name_color}</var>
+<arg>id:firstName</arg>
+<arg>border-color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<status status="NOT RUN" starttime="20210409 13:05:59.725" endtime="20210409 13:05:59.725"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${first_name_color}</arg>
+<arg>${rgb_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20210409 13:05:59.725" endtime="20210409 13:05:59.725"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:05:59.725" endtime="20210409 13:06:01.964"/>
+</kw>
+<status status="FAIL" starttime="20210409 13:05:55.505" endtime="20210409 13:06:01.965">The element '//div[@class='modal-content']' should not be visible, but it is.</status>
+</test>
+<test id="s1-t4" name="Check whether user is not able to submit form with empty second name field">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:06:01.973" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:06:01.972" endtime="20210409 13:06:05.065"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:06:05.065" endtime="20210409 13:06:05.185"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:06:05.189" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:06:05.185" endtime="20210409 13:06:05.189"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:01.971" endtime="20210409 13:06:05.189"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
+<arg>${valid_username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:05.190" level="INFO">Typing text 'MAX' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:06:05.189" endtime="20210409 13:06:05.291"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
 <arg>${EMPTY}</arg>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20210329 14:09:18.734" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20210329 14:09:18.734" endtime="20210329 14:09:18.734"/>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:05.293" level="INFO">Typing text '' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:06:05.292" endtime="20210409 13:06:05.370"/>
 </kw>
-<kw name="Post Request" library="RequestsLibrary">
-<var>${response}</var>
-<arg>user_registration</arg>
-<arg>/Account/v1/User</arg>
-<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
-<arg>headers=${header}</arg>
-<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
-<msg timestamp="20210329 14:09:18.734" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20210329 14:09:18.933" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
- path_url=/Account/v1/User 
- headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '44'} 
- body=b'{"userName": "testussser2s", "password": ""}' 
- </msg>
-<msg timestamp="20210329 14:09:18.934" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
- status=400, reason=Bad Request 
- headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 11:09:18 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '59', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"3b-kfIAtNk1nsLmMi3OoOPrbSi9YOU"'} 
- body={"code":"1200","message":"UserName and Password required."} 
- </msg>
-<msg timestamp="20210329 14:09:18.934" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20210329 14:09:18.934" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:18.734" endtime="20210329 14:09:18.934"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${id:userEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:05.371" level="INFO">Typing text 'neuzelivsamom@gmail.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:06:05.371" endtime="20210409 13:06:05.480"/>
 </kw>
-<msg timestamp="20210329 14:09:18.934" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:18.733" endtime="20210329 14:09:18.934"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//label[text()='Male']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:05.481" level="INFO">Clicking element '//label[text()='Male']'.</msg>
+<status status="PASS" starttime="20210409 13:06:05.481" endtime="20210409 13:06:05.537"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:18.935" endtime="20210329 14:09:18.936"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${valid_phone_number}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:05.537" level="INFO">Typing text '0964654654' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:06:05.537" endtime="20210409 13:06:05.635"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:18.937" endtime="20210329 14:09:18.937"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:05.635" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:06:05.635" endtime="20210409 13:06:05.697"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:18.938" endtime="20210329 14:09:18.939"/>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>//div[@class='modal-content']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20210409 13:06:05.709" level="INFO">Element '//div[@class='modal-content']' did not exist.</msg>
+<status status="PASS" starttime="20210409 13:06:05.699" endtime="20210409 13:06:05.710"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20210329 14:09:18.941" level="INFO">${status_code} = 400</msg>
-<status status="PASS" starttime="20210329 14:09:18.940" endtime="20210329 14:09:18.941"/>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//form[@class='was-validated']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20210409 13:06:05.710" endtime="20210409 13:06:05.721"/>
 </kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>400</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20210329 14:09:18.941" endtime="20210329 14:09:18.942"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210409 13:06:06.732" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210409 13:06:05.721" endtime="20210409 13:06:06.732"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${res_content}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20210329 14:09:18.943" level="INFO">${res_content} = {"code":"1200","message":"UserName and Password required."}</msg>
-<status status="PASS" starttime="20210329 14:09:18.942" endtime="20210329 14:09:18.943"/>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${last_name_color}</var>
+<arg>id:lastName</arg>
+<arg>border-color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20210409 13:06:06.741" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="5422a96af8deec33e540b1f653681260", element="4f8c3732-7464-465e-8d59-d7e239d3044e")&gt;</msg>
+<status status="PASS" starttime="20210409 13:06:06.733" endtime="20210409 13:06:06.741"/>
 </kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${res_content}</arg>
-<arg>UserName and Password required.</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20210329 14:09:18.944" endtime="20210329 14:09:18.944"/>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210409 13:06:06.751" level="INFO">${prop_val} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:06.741" endtime="20210409 13:06:06.751"/>
 </kw>
-<status status="PASS" starttime="20210329 14:09:18.730" endtime="20210329 14:09:18.945"/>
+<msg timestamp="20210409 13:06:06.751" level="INFO">${last_name_color} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:06.733" endtime="20210409 13:06:06.751"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${last_name_color}</arg>
+<arg>${rgb_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:06:06.751" endtime="20210409 13:06:06.752"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:06:06.752" endtime="20210409 13:06:09.479"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:01.970" endtime="20210409 13:06:09.480"/>
 </test>
-<test id="s1-t4" name="User_registration_with_existing_user">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>user_registration</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20210329 14:09:18.947" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20210329 14:09:18.947" endtime="20210329 14:09:18.948"/>
+<test id="s1-t5" name="Check whether user is not able to submit form with a Space in second name field">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:06:09.485" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:06:09.485" endtime="20210409 13:06:14.360"/>
 </kw>
-<kw name="Input username and password" library="keywords">
-<var>${response}</var>
-<arg>${userName}</arg>
-<arg>${password}</arg>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20210329 14:09:18.949" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20210329 14:09:18.949" endtime="20210329 14:09:18.949"/>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:06:14.360" endtime="20210409 13:06:14.502"/>
 </kw>
-<kw name="Post Request" library="RequestsLibrary">
-<var>${response}</var>
-<arg>user_registration</arg>
-<arg>/Account/v1/User</arg>
-<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
-<arg>headers=${header}</arg>
-<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
-<msg timestamp="20210329 14:09:18.949" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20210329 14:09:19.188" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
- path_url=/Account/v1/User 
- headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '54'} 
- body=b'{"userName": "testussser2s", "password": "1234qweRE!"}' 
- </msg>
-<msg timestamp="20210329 14:09:19.188" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
- status=406, reason=Not Acceptable 
- headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 11:09:19 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '40', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"28-Ol+1T9TtJMfkxjesktiJwJPAuBU"'} 
- body={"code":"1204","message":"User exists!"} 
- </msg>
-<msg timestamp="20210329 14:09:19.188" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20210329 14:09:19.189" level="INFO">${response} = &lt;Response [406]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:18.949" endtime="20210329 14:09:19.190"/>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:06:14.505" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:06:14.502" endtime="20210409 13:06:14.505"/>
 </kw>
-<msg timestamp="20210329 14:09:19.191" level="INFO">${response} = &lt;Response [406]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:18.948" endtime="20210329 14:09:19.191"/>
+<status status="PASS" starttime="20210409 13:06:09.484" endtime="20210409 13:06:14.506"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:19.192" endtime="20210329 14:09:19.194"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
+<arg>${id:firstName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:14.506" level="INFO">Typing text 'Mariana' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:06:14.506" endtime="20210409 13:06:14.606"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:19.194" endtime="20210329 14:09:19.196"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
+<arg>${SPACE}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:14.607" level="INFO">Typing text ' ' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:06:14.607" endtime="20210409 13:06:14.689"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:19.197" endtime="20210329 14:09:19.198"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${id:userEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:14.690" level="INFO">Typing text 'neuzelivsamom@gmail.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:06:14.689" endtime="20210409 13:06:14.788"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20210329 14:09:19.200" level="INFO">${status_code} = 406</msg>
-<status status="PASS" starttime="20210329 14:09:19.199" endtime="20210329 14:09:19.200"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//label[text()='Male']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:14.788" level="INFO">Clicking element '//label[text()='Male']'.</msg>
+<status status="PASS" starttime="20210409 13:06:14.788" endtime="20210409 13:06:14.840"/>
 </kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>406</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20210329 14:09:19.201" endtime="20210329 14:09:19.201"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${valid_phone_number}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:14.841" level="INFO">Typing text '0964654654' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:06:14.841" endtime="20210409 13:06:14.926"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${res_content}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20210329 14:09:19.204" level="INFO">${res_content} = {"code":"1204","message":"User exists!"}</msg>
-<status status="PASS" starttime="20210329 14:09:19.203" endtime="20210329 14:09:19.204"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:14.927" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:06:14.926" endtime="20210409 13:06:15.020"/>
 </kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${res_content}</arg>
-<arg>User exists!</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20210329 14:09:19.205" endtime="20210329 14:09:19.205"/>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>//div[@class='modal-content']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210409 13:06:15.476" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-32.png"&gt;&lt;img src="selenium-screenshot-32.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20210409 13:06:15.054" endtime="20210409 13:06:15.476"/>
 </kw>
-<status status="PASS" starttime="20210329 14:09:18.946" endtime="20210329 14:09:19.206"/>
+<msg timestamp="20210409 13:06:15.477" level="FAIL">The element '//div[@class='modal-content']' should not be visible, but it is.</msg>
+<status status="FAIL" starttime="20210409 13:06:15.022" endtime="20210409 13:06:15.477"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//form[@class='was-validated']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="NOT RUN" starttime="20210409 13:06:15.480" endtime="20210409 13:06:15.480"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20210409 13:06:15.480" endtime="20210409 13:06:15.480"/>
+</kw>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${last_name_color}</var>
+<arg>id:lastName</arg>
+<arg>border-color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<status status="NOT RUN" starttime="20210409 13:06:15.480" endtime="20210409 13:06:15.480"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${last_name_color}</arg>
+<arg>${rgb_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20210409 13:06:15.481" endtime="20210409 13:06:15.481"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:06:15.481" endtime="20210409 13:06:18.006"/>
+</kw>
+<status status="FAIL" starttime="20210409 13:06:09.483" endtime="20210409 13:06:18.008">The element '//div[@class='modal-content']' should not be visible, but it is.</status>
 </test>
-<test id="s1-t5" name="User_registration_with_invalid_password">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>user_registration</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20210329 14:09:19.209" level="INFO">Creating Session using : alias=user_registration, url=https://demoqa.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20210329 14:09:19.208" endtime="20210329 14:09:19.209"/>
+<test id="s1-t6" name="Check whether user is not able to submit form with unpicked gender options">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:06:18.019" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:06:18.019" endtime="20210409 13:06:20.918"/>
 </kw>
-<kw name="Input username and password" library="keywords">
-<var>${response}</var>
-<arg>${userName}</arg>
-<arg>215648sa</arg>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20210329 14:09:19.211" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20210329 14:09:19.210" endtime="20210329 14:09:19.211"/>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:06:20.918" endtime="20210409 13:06:21.042"/>
 </kw>
-<kw name="Post Request" library="RequestsLibrary">
-<var>${response}</var>
-<arg>user_registration</arg>
-<arg>/Account/v1/User</arg>
-<arg>data={"userName": "${name}", "password": "${passwrd}"}</arg>
-<arg>headers=${header}</arg>
-<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
-<msg timestamp="20210329 14:09:19.211" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20210329 14:09:19.411" level="INFO">POST Request : url=https://demoqa.com/Account/v1/User 
- path_url=/Account/v1/User 
- headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '52'} 
- body=b'{"userName": "testussser2s", "password": "215648sa"}' 
- </msg>
-<msg timestamp="20210329 14:09:19.411" level="INFO">POST Response : url=https://demoqa.com/Account/v1/User 
- status=400, reason=Bad Request 
- headers={'Server': 'nginx/1.17.10 (Ubuntu)', 'Date': 'Mon, 29 Mar 2021 11:09:19 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '230', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'ETag': 'W/"e6-Suxub+fxI99/3YEWz5cjyd3KlvQ"'} 
- body={"code":"1300","message":"Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer."} 
- </msg>
-<msg timestamp="20210329 14:09:19.411" level="INFO">c:\users\maksy\pycharmprojects\testproject\venv\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'demoqa.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20210329 14:09:19.412" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:19.211" endtime="20210329 14:09:19.412"/>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:06:21.058" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:06:21.043" endtime="20210409 13:06:21.058"/>
 </kw>
-<msg timestamp="20210329 14:09:19.413" level="INFO">${response} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20210329 14:09:19.210" endtime="20210329 14:09:19.413"/>
+<status status="PASS" starttime="20210409 13:06:18.017" endtime="20210409 13:06:21.059"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:19.413" endtime="20210329 14:09:19.414"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
+<arg>${id:firstName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:21.063" level="INFO">Typing text 'Mariana' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:06:21.060" endtime="20210409 13:06:21.216"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:19.415" endtime="20210329 14:09:19.416"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
+<arg>${id:lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:21.217" level="INFO">Typing text 'Zenzen' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:06:21.217" endtime="20210409 13:06:21.300"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20210329 14:09:19.417" endtime="20210329 14:09:19.418"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${id:userEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:21.301" level="INFO">Typing text 'neuzelivsamom@gmail.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:06:21.301" endtime="20210409 13:06:21.399"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20210329 14:09:19.419" level="INFO">${status_code} = 400</msg>
-<status status="PASS" starttime="20210329 14:09:19.418" endtime="20210329 14:09:19.419"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${valid_phone_number}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:21.400" level="INFO">Typing text '0964654654' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:06:21.400" endtime="20210409 13:06:21.491"/>
 </kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>400</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20210329 14:09:19.419" endtime="20210329 14:09:19.420"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:21.492" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:06:21.492" endtime="20210409 13:06:21.548"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${res_content}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20210329 14:09:19.421" level="INFO">${res_content} = {"code":"1300","message":"Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be...</msg>
-<status status="PASS" starttime="20210329 14:09:19.420" endtime="20210329 14:09:19.421"/>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>//div[@class='modal-content']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20210409 13:06:21.560" level="INFO">Element '//div[@class='modal-content']' did not exist.</msg>
+<status status="PASS" starttime="20210409 13:06:21.548" endtime="20210409 13:06:21.560"/>
 </kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${res_content}</arg>
-<arg>Passwords must have at least one non alphanumeric character, one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special character and Password must be eight characters or longer.</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20210329 14:09:19.423" endtime="20210329 14:09:19.423"/>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//form[@class='was-validated']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20210409 13:06:21.560" endtime="20210409 13:06:21.573"/>
 </kw>
-<status status="PASS" starttime="20210329 14:09:19.208" endtime="20210329 14:09:19.424"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210409 13:06:22.585" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210409 13:06:21.574" endtime="20210409 13:06:22.585"/>
+</kw>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${male_color}</var>
+<arg>//label[text()='Male']</arg>
+<arg>color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20210409 13:06:22.599" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="3c4eb613476806ee52f806524d3eba3c", element="0ec9903a-1b4f-40f6-bc1a-062c3d05cbf7")&gt;</msg>
+<status status="PASS" starttime="20210409 13:06:22.588" endtime="20210409 13:06:22.599"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210409 13:06:22.608" level="INFO">${prop_val} = rgba(220, 53, 69, 1)</msg>
+<status status="PASS" starttime="20210409 13:06:22.599" endtime="20210409 13:06:22.609"/>
+</kw>
+<msg timestamp="20210409 13:06:22.609" level="INFO">${male_color} = rgba(220, 53, 69, 1)</msg>
+<status status="PASS" starttime="20210409 13:06:22.587" endtime="20210409 13:06:22.609"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${male_color}</arg>
+<arg>${rgba_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:06:22.609" endtime="20210409 13:06:22.610"/>
+</kw>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${female_color}</var>
+<arg>//label[text()='Female']</arg>
+<arg>color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20210409 13:06:22.623" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="3c4eb613476806ee52f806524d3eba3c", element="9a3e7864-49f9-4bab-bf27-9d8122c17cc5")&gt;</msg>
+<status status="PASS" starttime="20210409 13:06:22.611" endtime="20210409 13:06:22.623"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210409 13:06:22.635" level="INFO">${prop_val} = rgba(220, 53, 69, 1)</msg>
+<status status="PASS" starttime="20210409 13:06:22.623" endtime="20210409 13:06:22.635"/>
+</kw>
+<msg timestamp="20210409 13:06:22.635" level="INFO">${female_color} = rgba(220, 53, 69, 1)</msg>
+<status status="PASS" starttime="20210409 13:06:22.611" endtime="20210409 13:06:22.635"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${female_color}</arg>
+<arg>${rgba_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:06:22.635" endtime="20210409 13:06:22.636"/>
+</kw>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${other_color}</var>
+<arg>//label[text()='Other']</arg>
+<arg>color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20210409 13:06:22.649" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="3c4eb613476806ee52f806524d3eba3c", element="ac8f7792-5356-48dd-b58d-1dfde7386d91")&gt;</msg>
+<status status="PASS" starttime="20210409 13:06:22.637" endtime="20210409 13:06:22.649"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210409 13:06:22.659" level="INFO">${prop_val} = rgba(220, 53, 69, 1)</msg>
+<status status="PASS" starttime="20210409 13:06:22.650" endtime="20210409 13:06:22.659"/>
+</kw>
+<msg timestamp="20210409 13:06:22.659" level="INFO">${other_color} = rgba(220, 53, 69, 1)</msg>
+<status status="PASS" starttime="20210409 13:06:22.636" endtime="20210409 13:06:22.659"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${other_color}</arg>
+<arg>${rgba_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:06:22.660" endtime="20210409 13:06:22.660"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:06:22.661" endtime="20210409 13:06:24.828"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:18.015" endtime="20210409 13:06:24.828"/>
 </test>
-<status status="FAIL" starttime="20210329 14:09:18.000" endtime="20210329 14:09:19.426"/>
+<test id="s1-t7" name="Check whether user is not able to submit form with empty phone number field">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:06:24.831" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:06:24.831" endtime="20210409 13:06:28.006"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:06:28.006" endtime="20210409 13:06:28.153"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:06:28.156" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:06:28.153" endtime="20210409 13:06:28.157"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:24.830" endtime="20210409 13:06:28.157"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
+<arg>${id:firstName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:28.157" level="INFO">Typing text 'Mariana' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:06:28.157" endtime="20210409 13:06:28.273"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
+<arg>${id:lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:28.274" level="INFO">Typing text 'Zenzen' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:06:28.273" endtime="20210409 13:06:28.368"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${id:userEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:28.369" level="INFO">Typing text 'neuzelivsamom@gmail.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:06:28.369" endtime="20210409 13:06:28.471"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//label[text()='Male']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:28.472" level="INFO">Clicking element '//label[text()='Male']'.</msg>
+<status status="PASS" starttime="20210409 13:06:28.472" endtime="20210409 13:06:28.530"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${EMPTY}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:28.531" level="INFO">Typing text '' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:06:28.530" endtime="20210409 13:06:28.602"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:28.603" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:06:28.602" endtime="20210409 13:06:28.664"/>
+</kw>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>//div[@class='modal-content']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20210409 13:06:28.674" level="INFO">Element '//div[@class='modal-content']' did not exist.</msg>
+<status status="PASS" starttime="20210409 13:06:28.665" endtime="20210409 13:06:28.674"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//form[@class='was-validated']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20210409 13:06:28.675" endtime="20210409 13:06:28.685"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210409 13:06:29.687" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210409 13:06:28.686" endtime="20210409 13:06:29.687"/>
+</kw>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${phone_number}</var>
+<arg>id:userNumber</arg>
+<arg>border-color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20210409 13:06:29.696" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="4babcbcca1782a2bbb8ef43bb58868b7", element="5592cf33-733e-4f8e-8595-d3c2e11f0751")&gt;</msg>
+<status status="PASS" starttime="20210409 13:06:29.688" endtime="20210409 13:06:29.697"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210409 13:06:29.706" level="INFO">${prop_val} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:29.697" endtime="20210409 13:06:29.706"/>
+</kw>
+<msg timestamp="20210409 13:06:29.707" level="INFO">${phone_number} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:29.688" endtime="20210409 13:06:29.707"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${phone_number}</arg>
+<arg>${rgb_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:06:29.707" endtime="20210409 13:06:29.707"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:06:29.708" endtime="20210409 13:06:33.262"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:24.829" endtime="20210409 13:06:33.263"/>
+</test>
+<test id="s1-t8" name="Check whether user is not able to submit form with invalid phone number">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:06:33.274" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:06:33.273" endtime="20210409 13:06:36.227"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:06:36.228" endtime="20210409 13:06:36.355"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:06:36.360" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:06:36.355" endtime="20210409 13:06:36.360"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:33.271" endtime="20210409 13:06:36.361"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
+<arg>${id:firstName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:36.362" level="INFO">Typing text 'Mariana' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:06:36.361" endtime="20210409 13:06:36.473"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
+<arg>${id:lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:36.474" level="INFO">Typing text 'Zenzen' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:06:36.474" endtime="20210409 13:06:36.558"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${id:userEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:36.559" level="INFO">Typing text 'neuzelivsamom@gmail.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:06:36.558" endtime="20210409 13:06:36.658"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//label[text()='Male']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:36.659" level="INFO">Clicking element '//label[text()='Male']'.</msg>
+<status status="PASS" starttime="20210409 13:06:36.659" endtime="20210409 13:06:36.709"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${invalid_phone_number}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:36.710" level="INFO">Typing text 'asd5asd' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:06:36.710" endtime="20210409 13:06:36.798"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:36.799" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:06:36.799" endtime="20210409 13:06:36.857"/>
+</kw>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>//div[@class='modal-content']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20210409 13:06:36.870" level="INFO">Element '//div[@class='modal-content']' did not exist.</msg>
+<status status="PASS" starttime="20210409 13:06:36.858" endtime="20210409 13:06:36.870"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//form[@class='was-validated']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20210409 13:06:36.871" endtime="20210409 13:06:36.882"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210409 13:06:37.889" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210409 13:06:36.883" endtime="20210409 13:06:37.889"/>
+</kw>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${phone_number}</var>
+<arg>id:userNumber</arg>
+<arg>border-color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20210409 13:06:37.898" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="363341ade7e9a1e981926c917adad1d4", element="49101107-a03a-49b8-9bf6-bff73b40cc28")&gt;</msg>
+<status status="PASS" starttime="20210409 13:06:37.891" endtime="20210409 13:06:37.898"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210409 13:06:37.909" level="INFO">${prop_val} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:37.899" endtime="20210409 13:06:37.909"/>
+</kw>
+<msg timestamp="20210409 13:06:37.909" level="INFO">${phone_number} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:37.890" endtime="20210409 13:06:37.909"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${phone_number}</arg>
+<arg>${rgb_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:06:37.910" endtime="20210409 13:06:37.910"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:06:37.910" endtime="20210409 13:06:40.079"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:33.270" endtime="20210409 13:06:40.080"/>
+</test>
+<test id="s1-t9" name="Check whether user is not able to submit form with empty phone number field">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:06:40.086" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:06:40.086" endtime="20210409 13:06:45.151"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:06:45.151" endtime="20210409 13:06:45.287"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:06:45.302" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:06:45.287" endtime="20210409 13:06:45.302"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:40.085" endtime="20210409 13:06:45.302"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
+<arg>${id:firstName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:45.305" level="INFO">Typing text 'Mariana' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:06:45.304" endtime="20210409 13:06:45.437"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
+<arg>${id:lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:45.438" level="INFO">Typing text 'Zenzen' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:06:45.438" endtime="20210409 13:06:45.535"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${id:userEmail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:45.536" level="INFO">Typing text 'neuzelivsamom@gmail.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:06:45.535" endtime="20210409 13:06:45.645"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//label[text()='Male']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:45.646" level="INFO">Clicking element '//label[text()='Male']'.</msg>
+<status status="PASS" starttime="20210409 13:06:45.646" endtime="20210409 13:06:45.703"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${EMPTY}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:45.704" level="INFO">Typing text '' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:06:45.703" endtime="20210409 13:06:45.779"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:45.780" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:06:45.780" endtime="20210409 13:06:45.840"/>
+</kw>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>//div[@class='modal-content']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20210409 13:06:45.853" level="INFO">Element '//div[@class='modal-content']' did not exist.</msg>
+<status status="PASS" starttime="20210409 13:06:45.842" endtime="20210409 13:06:45.853"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//form[@class='was-validated']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20210409 13:06:45.854" endtime="20210409 13:06:45.865"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210409 13:06:46.880" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210409 13:06:45.866" endtime="20210409 13:06:46.880"/>
+</kw>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${phone_number}</var>
+<arg>id:userNumber</arg>
+<arg>border-color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20210409 13:06:46.888" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="303b6ad06dd9de6a83489f90025bbf91", element="8ec7aa24-e8d9-4f27-b2b5-4e70c5fd1aaa")&gt;</msg>
+<status status="PASS" starttime="20210409 13:06:46.881" endtime="20210409 13:06:46.888"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210409 13:06:46.898" level="INFO">${prop_val} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:46.888" endtime="20210409 13:06:46.898"/>
+</kw>
+<msg timestamp="20210409 13:06:46.898" level="INFO">${phone_number} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:46.881" endtime="20210409 13:06:46.898"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${phone_number}</arg>
+<arg>${rgb_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:06:46.899" endtime="20210409 13:06:46.899"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:06:46.900" endtime="20210409 13:06:50.376"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:40.084" endtime="20210409 13:06:50.377"/>
+</test>
+<test id="s1-t10" name="Check whether user is not able to submit form with invalid email">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:06:50.384" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:06:50.384" endtime="20210409 13:06:55.286"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:06:55.286" endtime="20210409 13:06:55.415"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:06:55.420" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:06:55.416" endtime="20210409 13:06:55.420"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:50.382" endtime="20210409 13:06:55.420"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:firstName</arg>
+<arg>${id:firstName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:55.421" level="INFO">Typing text 'Mariana' into text field 'id:firstName'.</msg>
+<status status="PASS" starttime="20210409 13:06:55.421" endtime="20210409 13:06:55.540"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:lastName</arg>
+<arg>${id:lastName}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:55.541" level="INFO">Typing text 'Zenzen' into text field 'id:lastName'.</msg>
+<status status="PASS" starttime="20210409 13:06:55.541" endtime="20210409 13:06:55.625"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userEmail</arg>
+<arg>${invalid_email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:55.625" level="INFO">Typing text 'testingdemoqa@.com' into text field 'id:userEmail'.</msg>
+<status status="PASS" starttime="20210409 13:06:55.625" endtime="20210409 13:06:55.719"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//label[text()='Male']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:55.720" level="INFO">Clicking element '//label[text()='Male']'.</msg>
+<status status="PASS" starttime="20210409 13:06:55.720" endtime="20210409 13:06:55.771"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:userNumber</arg>
+<arg>${valid_phone_number}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:55.772" level="INFO">Typing text '0964654654' into text field 'id:userNumber'.</msg>
+<status status="PASS" starttime="20210409 13:06:55.771" endtime="20210409 13:06:55.865"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:submit</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:06:55.866" level="INFO">Clicking element 'id:submit'.</msg>
+<status status="PASS" starttime="20210409 13:06:55.866" endtime="20210409 13:06:55.928"/>
+</kw>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>//div[@class='modal-content']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20210409 13:06:55.937" level="INFO">Element '//div[@class='modal-content']' did not exist.</msg>
+<status status="PASS" starttime="20210409 13:06:55.928" endtime="20210409 13:06:55.938"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//form[@class='was-validated']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20210409 13:06:55.938" endtime="20210409 13:06:55.949"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20210409 13:06:56.965" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20210409 13:06:55.949" endtime="20210409 13:06:56.965"/>
+</kw>
+<kw name="Get CSS Property Value" library="keywords">
+<var>${email_color}</var>
+<arg>id:userEmail</arg>
+<arg>border-color</arg>
+<doc>Get the CSS property value of an Element.</doc>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<var>${css}</var>
+<arg>${locator}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<msg timestamp="20210409 13:06:56.973" level="INFO">${css} = &lt;selenium.webdriver.remote.webelement.WebElement (session="d648d49a198e2f8768d5017d2efcd499", element="97dbc338-2d4d-4e6d-9461-f2287cc79454")&gt;</msg>
+<status status="PASS" starttime="20210409 13:06:56.966" endtime="20210409 13:06:56.974"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<var>${prop_val}</var>
+<arg>${css}</arg>
+<arg>value_of_css_property</arg>
+<arg>${attribute name}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<msg timestamp="20210409 13:06:56.985" level="INFO">${prop_val} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:56.974" endtime="20210409 13:06:56.985"/>
+</kw>
+<msg timestamp="20210409 13:06:56.985" level="INFO">${email_color} = rgb(220, 53, 69)</msg>
+<status status="PASS" starttime="20210409 13:06:56.965" endtime="20210409 13:06:56.985"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${email_color}</arg>
+<arg>${rgb_red}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:06:56.986" endtime="20210409 13:06:56.986"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:06:56.986" endtime="20210409 13:06:59.165"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:50.381" endtime="20210409 13:06:59.166"/>
+</test>
+<test id="s1-t11" name="Check whether the date of birth picker displays the date that user selects">
+<kw name="Start browser and maximaze" library="keywords" type="SETUP">
+<arg>https://demoqa.com/automation-practice-form</arg>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210409 13:06:59.173" level="INFO">Opening browser 'chrome' to base url 'https://demoqa.com/automation-practice-form'.</msg>
+<status status="PASS" starttime="20210409 13:06:59.172" endtime="20210409 13:07:04.110"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210409 13:07:04.111" endtime="20210409 13:07:04.243"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>ToolsQA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210409 13:07:04.248" level="INFO">Page title is 'ToolsQA'.</msg>
+<status status="PASS" starttime="20210409 13:07:04.244" endtime="20210409 13:07:04.248"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:59.170" endtime="20210409 13:07:04.248"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id:dateOfBirthInput</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:07:04.249" level="INFO">Clicking element 'id:dateOfBirthInput'.</msg>
+<status status="PASS" starttime="20210409 13:07:04.248" endtime="20210409 13:07:04.397"/>
+</kw>
+<kw name="Calendar navigate" library="keywords">
+<arg>previous</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath://button[@class="react-datepicker__navigation react-datepicker__navigation--${previous}"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210409 13:07:04.403" endtime="20210409 13:07:04.433"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://button[@class="react-datepicker__navigation react-datepicker__navigation--${previous}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:07:04.433" level="INFO">Clicking element 'xpath://button[@class="react-datepicker__navigation react-datepicker__navigation--previous"]'.</msg>
+<status status="PASS" starttime="20210409 13:07:04.433" endtime="20210409 13:07:04.513"/>
+</kw>
+<status status="PASS" starttime="20210409 13:07:04.402" endtime="20210409 13:07:04.513"/>
+</kw>
+<kw name="Calendar navigate" library="keywords">
+<arg>next</arg>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath://button[@class="react-datepicker__navigation react-datepicker__navigation--${previous}"]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210409 13:07:04.514" endtime="20210409 13:07:04.537"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://button[@class="react-datepicker__navigation react-datepicker__navigation--${previous}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:07:04.538" level="INFO">Clicking element 'xpath://button[@class="react-datepicker__navigation react-datepicker__navigation--next"]'.</msg>
+<status status="PASS" starttime="20210409 13:07:04.537" endtime="20210409 13:07:04.594"/>
+</kw>
+<status status="PASS" starttime="20210409 13:07:04.513" endtime="20210409 13:07:04.595"/>
+</kw>
+<kw name="Select month" library="keywords">
+<arg>July</arg>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>class:react-datepicker__month-select</arg>
+<arg>${month}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20210409 13:07:04.596" level="INFO">Selecting options from selection list 'class:react-datepicker__month-select' by label July.</msg>
+<status status="PASS" starttime="20210409 13:07:04.595" endtime="20210409 13:07:04.673"/>
+</kw>
+<status status="PASS" starttime="20210409 13:07:04.595" endtime="20210409 13:07:04.673"/>
+</kw>
+<kw name="Select year" library="keywords">
+<arg>1993</arg>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>class:react-datepicker__year-select</arg>
+<arg>${year}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20210409 13:07:04.674" level="INFO">Selecting options from selection list 'class:react-datepicker__year-select' by label 1993.</msg>
+<status status="PASS" starttime="20210409 13:07:04.674" endtime="20210409 13:07:04.758"/>
+</kw>
+<status status="PASS" starttime="20210409 13:07:04.673" endtime="20210409 13:07:04.758"/>
+</kw>
+<kw name="Select day" library="keywords">
+<arg>21st</arg>
+<arg>July</arg>
+<arg>1993</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://div[@aria-label="Choose Wednesday, ${month} ${day}, ${year}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210409 13:07:04.759" level="INFO">Clicking element 'xpath://div[@aria-label="Choose Wednesday, July 21st, 1993"]'.</msg>
+<status status="PASS" starttime="20210409 13:07:04.758" endtime="20210409 13:07:04.826"/>
+</kw>
+<status status="PASS" starttime="20210409 13:07:04.758" endtime="20210409 13:07:04.826"/>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>id:dateOfBirthInput</arg>
+<arg>value</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20210409 13:07:04.838" level="INFO">${value} = 21 Jul 1993</msg>
+<status status="PASS" starttime="20210409 13:07:04.827" endtime="20210409 13:07:04.838"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${value}</arg>
+<arg>21 Jul 1993</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20210409 13:07:04.839" endtime="20210409 13:07:04.840"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210409 13:07:04.840" endtime="20210409 13:07:07.217"/>
+</kw>
+<status status="PASS" starttime="20210409 13:06:59.169" endtime="20210409 13:07:07.218"/>
+</test>
+<status status="FAIL" starttime="20210409 13:05:39.455" endtime="20210409 13:07:07.222"/>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="1" skip="0">All Tests</stat>
+<stat pass="9" fail="2" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="4" fail="1" skip="0" id="s1" name="TS1 POST user registration">TS1 POST user registration</stat>
+<stat pass="9" fail="2" skip="0" id="s1" name="TS10 practice form">TS10 practice form</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20210329 14:09:18.198" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20210329 14:09:18.482" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20210329 14:09:18.734" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20210329 14:09:18.949" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20210329 14:09:19.211" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20210409 13:06:40.082" level="WARN">Multiple test cases with name 'Check whether user is not able to submit form with empty phone number field' executed in test suite 'TS10 practice form'.</msg>
 </errors>
 </robot>
