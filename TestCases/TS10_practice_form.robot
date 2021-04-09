@@ -13,7 +13,7 @@ ${UploadFiletest}           xpath://input[@id="uploadPicture"]
 ${AddFile}                  D:/download.jpg
 ${filename}                 download.jpg
 ${rgba_red}                 rgba(220, 53, 69, 1)
-${rgb_red}                  rgb(220, 53, 69)
+${rgb_red}                  rgb(2s20, 53, 69)
 
 *** Test Cases ***
 Check practice form works with valid data
