@@ -14,7 +14,6 @@ ${AddFile}                  D:/download.jpg
 ${filename}                 download.jpg
 ${rgba_red}                 rgba(220, 53, 69, 1)
 ${rgb_red}                  rgb(220, 53, 69)
-${moneyxx}
 
 *** Test Cases ***
 Check practice form works with valid data
