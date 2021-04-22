@@ -20,13 +20,15 @@ Check that all items of the menu are clickable
         wait until page contains element    (//div[@class="element-group"])[${res}]/div[@class="element-list collapse show"]
         execute javascript          window.scrollTo(0,document.body.scrollHeight)
         ${li_number}                get element count           (//div[@class="element-group"])[${res}]//li
-        FOR  ${ress}  IN RANGE  ${res}  ${li_number}
+        FOR  ${ress}  IN RANGE  1  ${li_number}
             click element           ((//div[@class="element-group"])[${res}]//li)[${ress}]
             execute javascript          window.scrollTo(0,document.body.scrollHeight)
             ${li_text}              get text        ((//div[@class="element-group"])[${res}]//li)[${ress}]/span
             ${header_text}          get text        //div[@class="main-header"]
             should be equal as strings          ${li_text}  ${header_text}
         END
+        click element               (//div[@class="header-wrapper"])[${res}]
+        wait until page contains element    (//div[@class="element-group"])[${res}]/div[@class="element-list collapse"]
     END
 
 Сheck that the lower menu item is visible when you expand the items above
