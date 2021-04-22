@@ -3,6 +3,19 @@ Library                 Collections
 Library                 RequestsLibrary
 
 *** Variables ***
+@{LIST}   Blue    Black    Green    Aqua    Red     Indigo  White   Yellow  Violet
+@{LIS}    Blu     Blac     Gree     Aqu     Re      Indig   Whit    Yello   Viole
+@{INVALID_COLOR}    Bluse    Blacak    Greefn    Aqufga    Refgd     Indifgo  Whwwte   Yelalow  Vioalet
+@{DAYth}    0  1st  2nd  3rd  4th  5th  6th  7th  8th  9th  10th  11th  12th  13th  14th  15th  16th  17th  18th  19th  20th  21st  22nd  23rd  24th  25th  26th  27th  28th  29th  30th  31st
+@{DAY}      0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31
+@{MONTH}    0  January  February  March  April  May  June  July  August  September  October  November  December
+@{HOURS}    0  0:00    0:15   0:30   0:45   1:00   1:15   1:30   1:45   2:00   2:15   2:30   2:45   3:00   3:15   3:30   3:45   4:00   4:15   4:30   4:45   5:00   5:15   5:30   5:45
+...         6:00   6:15   6:30   6:45   7:00   7:15   7:30   7:45   8:00   8:15   8:30   8:45   9:00   9:15   9:30   9:45   10:00   10:15   10:30   10:45   11:00   11:15   11:30   11:45
+...         12:00   12:15   12:30   12:45   13:00   13:15   13:30   13:45   14:00   14:15   14:30   14:45   15:00   15:15   15:30   15:45   16:00   16:15   16:30   16:45   17:00   17:15   17:30   17:45
+...         18:00   18:15   18:30   18:45   19:00   19:15   19:30   19:45   20:00   20:15   20:30   20:45   21:00   21:15   21:30   21:45   22:00   22:15   22:30   22:45   23:00   23:15   23:30   23:45
+@{tooltips_locators}  0  //button[@id="toolTipButton"]  //input[@id="toolTipTextField"]    (//div[@id="texToolTopContainer"]/a)[1]     (//div[@id="texToolTopContainer"]/a)[2]
+@{hover_messages}  0     You hovered over the Button    You hovered over the text field    You hovered over the Contrary                You hovered over the 1.10.32
+
 ${base_url}                 https://demoqa.com/
 ${browser}                  chrome
 ${elements}                 xpath:(//div[@class='avatar mx-auto white'])[1]/*[name()='svg']
@@ -29,6 +42,19 @@ ${invalid_email}            testingdemoqa@.com
 ${valid_cur_address}        In the middle of nowhere
 ${valid_per_address}        Somewhere in Mordor
 ${response_data_text_box}   xpath://div[@class="border col-md-12 col-sm-12"]
+${deleted_username}         DdeletedUSER!1232
+${deleted_pass}             deletedUSER!1232
+${willbedeleted_username}   willbeDdeletedUSER!1232
+${willbedeleted_pass}       willbedeletedUSER!1232
+${existed_valid_username}   MAXIMmax123!s
+${existed_valid_pass}       MAXIMmax123!s
+${existed_valid_userid}     88718c4d-6f5f-435a-a807-bdb044658521
+${loginout_username}        loginoutuser
+${loginout_pass}            loginOUTpass!123
+${validusername255char}     MAxMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAX
+${validpass255char}         max12!XMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXASAASSASSSS
+${invalidusername256char}   mMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAX
+${invalidpass256char}       mmax12!XMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXASAASSASSSS
 
 ${id:firstName}             Mariana
 ${id:firstName_edited}      Katia
@@ -38,3 +64,6 @@ ${invalid_age}              520
 ${id:age}                   12
 ${id:salary}                26
 ${id:department}            DEPARTAMENT NICHOGO NEROBLENNIA
+
+${rgba_red}                 rgba(220, 53, 69, 1)
+${rgb_red}                  rgb(220, 53, 69)

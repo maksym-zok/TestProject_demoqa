@@ -85,7 +85,7 @@ Check whether user information is added to the end of the list
     ${count}    convert to integer  ${count}
     FOR    ${res}    IN RANGE     1  ${count}
             ${text}     get text    (//div[@class='rt-tr-group'])[${res}]/div[@role="row"]/div[1]
-            exit for loop if    '${text}' == '${id:firstName}'
+#            exit for loop if    '${text}' == '${id:firstName}'
     END
     ${res}  evaluate    ${res}+1
     element should contain  (//div[@class='rt-tr-group'])[${res}]/div[@role="row"]/div[1]   ${EMPTY}
