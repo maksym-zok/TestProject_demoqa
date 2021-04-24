@@ -10,7 +10,6 @@ Test Teardown           close browser
 
 *** Test Cases ***
 Text Box testing with valid data
-    input
     When User Input valid username
     And Input valid email
     And Input valid current address
