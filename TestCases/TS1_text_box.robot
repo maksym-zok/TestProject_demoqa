@@ -3,13 +3,14 @@ Library                 BuiltIn
 Library                 Collections
 Library                 RequestsLibrary
 Library                 SeleniumLibrary
-Resource        ../Bindings/keywords.robot
-Resource        ../Resources/variables.robot
+Resource                ../Bindings/keywords.robot
+Resource                ../Resources/variables.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/text-box
 Test Teardown           close browser
 
 *** Test Cases ***
 Text Box testing with valid data
+    input
     When User Input valid username
     And Input valid email
     And Input valid current address
