@@ -4,30 +4,31 @@ Library                 Collections
 Library                 SeleniumLibrary
 Resource                ../Bindings/keywords.robot
 Resource                ../Resources/variables.robot
+Resource                ../Resources/TS5_buttons_keywords.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/buttons
 Test Teardown           close browser
 
 *** Test Cases ***
 Check whether "Double click me" button accepts double click
-    double click element            id:doubleClickBtn
-    element should contain          id:doubleClickMessage   You have done a double click
+    double click element                ${btn_double}
+    Verify message after double click   ${msg_double}
 
 Check whether "Double click me" button doesnt accept misclick
-    open context menu               id:doubleClickBtn
-    element should not be visible   id:doubleClickMessage
+    open context menu                   ${btn_double}
+    Verify misclick                     ${btn_double_message}
 
 Check whether "Right click me" button accepts context menu click
-    open context menu               id:rightClickBtn
-    element should contain          id:rightClickMessage    You have done a right click
+    open context menu                   ${btn_context}
+    Verify message after right click    ${msg_context}
 
 Check whether "Right click me" button doesnt accept misclick
-    click element                   id:rightClickBtn
-    element should not be visible   id:rightClickMessage
+    click element                       ${btn_context}
+    Verify misclick                     ${btn_context_message}
 
 Check whether "Click me" button accepts left mouse button click
-    click button                    xpath://*[text()='Click Me']
-    element should contain          id:dynamicClickMessage  You have done a dynamic click
+    click button                        ${btn_one_click}
+    Verify message after left click     ${msg_one_click}
 
 Check whether "Click me" button doesnt accept misclick
-    open context menu               xpath://*[text()='Click Me']
-    element should not be visible   id:dynamicClickMessage
+    open context menu                   ${btn_one_click}
+    Verify misclick                     ${btn_one_click_message}

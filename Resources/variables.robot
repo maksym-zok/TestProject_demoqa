@@ -3,8 +3,14 @@ Library                 Collections
 Library                 RequestsLibrary
 
 *** Variables ***
+@{STATE}    NCR   Uttar Pradesh     Haryana  Rajasthan
+@{STAT}    NC   Uttar Prades     Harya  Rajasth
+@{STATE_NCR}    Delhi   Gurgaon  Noida
+@{STATE_NC}    Delh   Gurgao  Noid
 @{LIST}   Blue    Black    Green    Aqua    Red     Indigo  White   Yellow  Violet
 @{LIS}    Blu     Blac     Gree     Aqu     Re      Indig   Whit    Yello   Viole
+@{LIS_SUBJECTS}    Math    Chemist  Comput  Commer  Econom
+@{LIST_SUBJECTS}    Maths    Chemistry  Computer Science  Commerce  Economics
 @{INVALID_COLOR}    Bluse    Blacak    Greefn    Aqufga    Refgd     Indifgo  Whwwte   Yelalow  Vioalet
 @{DAYth}    0  1st  2nd  3rd  4th  5th  6th  7th  8th  9th  10th  11th  12th  13th  14th  15th  16th  17th  18th  19th  20th  21st  22nd  23rd  24th  25th  26th  27th  28th  29th  30th  31st
 @{DAY}      0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31
@@ -16,6 +22,8 @@ Library                 RequestsLibrary
 @{tooltips_locators}  0  //button[@id="toolTipButton"]  //input[@id="toolTipTextField"]    (//div[@id="texToolTopContainer"]/a)[1]     (//div[@id="texToolTopContainer"]/a)[2]
 @{hover_messages}  0     You hovered over the Button    You hovered over the text field    You hovered over the Contrary                You hovered over the 1.10.32
 
+
+#${res}
 ${base_url}                 https://demoqa.com/
 ${browser}                  chrome
 ${elements}                 xpath:(//div[@class='avatar mx-auto white'])[1]/*[name()='svg']
@@ -35,10 +43,15 @@ ${browser_windows}          xpath://div[@class='element-list collapse show']/ul/
 ${alerts}                   xpath://div[@class='element-list collapse show']/ul/li[@id='item-1']/*[name()='svg']
 
 ${valid_phone_number}       0964654654
+${invalid_phone_number_1_digit}  1
+${invalid_phone_number_9_digit}  123456789
 ${invalid_phone_number}     asd5asd
 ${valid_username}           MAX
 ${valid_email}              testingdemoqa@gmail.com
 ${invalid_email}            testingdemoqa@.com
+${valid_255char_address}    In the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle s
+${invalid_256char_address}  In the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle of nowhereIn the middle ss
+${valid_1char_address}      N
 ${valid_cur_address}        In the middle of nowhere
 ${valid_per_address}        Somewhere in Mordor
 ${response_data_text_box}   xpath://div[@class="border col-md-12 col-sm-12"]
@@ -55,15 +68,31 @@ ${validusername255char}     MAxMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXM
 ${validpass255char}         max12!XMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXASAASSASSSS
 ${invalidusername256char}   mMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAX
 ${invalidpass256char}       mmax12!XMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXMAXASAASSASSSS
+${validusername1char}       J
 
 ${id:firstName}             Mariana
 ${id:firstName_edited}      Katia
 ${id:lastName}              Zenzen
 ${id:userEmail}             neuzelivsamom@gmail.com
-${invalid_age}              520
+${invalid_age}              lol
 ${id:age}                   12
 ${id:salary}                26
 ${id:department}            DEPARTAMENT NICHOGO NEROBLENNIA
 
 ${rgba_red}                 rgba(220, 53, 69, 1)
 ${rgb_red}                  rgb(220, 53, 69)
+${white}                    rgba(255, 255, 255, 1)
+
+${msg_double}               You have done a double click
+${msg_context}              You have done a right click
+${msg_one_click}            You have done a dynamic click
+
+
+${web_site_title}           ToolsQA
+${code_201}                 Link has responded with staus 201 and status text Created
+${code_204}                 Link has responded with staus 204 and status text No Content
+${code_301}                 Link has responded with staus 301 and status text Moved Permanently
+${code_400}                 Link has responded with staus 400 and status text Bad Request
+${code_401}                 Link has responded with staus 401 and status text Unauthorized
+${code_403}                 Link has responded with staus 403 and status text Forbidden
+${code_404}                 Link has responded with staus 404 and status text Not Found

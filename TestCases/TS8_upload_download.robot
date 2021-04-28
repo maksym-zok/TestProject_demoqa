@@ -5,21 +5,15 @@ Library                 SeleniumLibrary
 Library                 RequestsLibrary
 Resource                ../Bindings/keywords.robot
 Resource                ../Resources/variables.robot
+Resource                ../Resources/TS8_upload_download_keywords.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/upload-download
 Test Teardown           close browser
 
-*** Variables ***
-${UploadFiletest}           xpath://*[@type='file']
-${AddFile}                  D:/download.jpg
-
 *** Test Cases ***
+
 Check image uploading works
+    Chose file to upload    ${img_to_upload}
+    Verify uploaded file    ${filename}
 
-    Wait Until Page Contains Element    ${UploadFiletest}       60s
-    Scroll Element Into View            ${UploadFiletest}
-    Choose File                         ${UploadFiletest}       ${AddFile}
-    ${filename}                         convert to string       C:\\fakepath\\download.jpg
-    wait until element contains         id:uploadedFilePath     ${filename}
-
-Check image downloading works
-    click link                          id:downloadButton
+#Check image downloading works
+#    Click                   ${bownload_button}

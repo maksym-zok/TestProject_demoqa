@@ -28,11 +28,11 @@ Input valid permanent address
 Submit data in Text Box
     click element   id:submit
 
-Inputted data corresponds to the data in the response
-    element should contain  xpath://div[@class="border col-md-12 col-sm-12"]/p[@id="name"]    ${valid_username}
-    element should contain  xpath://div[@class="border col-md-12 col-sm-12"]/p[@id="email"]    ${valid_email}
-    element should contain  xpath://div[@class="border col-md-12 col-sm-12"]/p[@id="currentAddress"]    ${valid_cur_address}
-    element should contain  xpath://div[@class="border col-md-12 col-sm-12"]/p[@id="permanentAddress"]    ${valid_per_address}
+#Inputted data corresponds to the data in the response
+#    element should contain  xpath://div[@class="border col-md-12 col-sm-12"]/p[@id="name"]    ${valid_username}
+#    element should contain  xpath://div[@class="border col-md-12 col-sm-12"]/p[@id="email"]    ${valid_email}
+#    element should contain  xpath://div[@class="border col-md-12 col-sm-12"]/p[@id="currentAddress"]    ${valid_cur_address}
+#    element should contain  xpath://div[@class="border col-md-12 col-sm-12"]/p[@id="permanentAddress"]    ${valid_per_address}
 
 User is on Text Box page
     open browser    ${base_url}   ${browser}
@@ -113,27 +113,29 @@ Calendar navigate
     wait until element is visible   xpath://button[@class="react-datepicker__navigation react-datepicker__navigation--${previous}"]
     click element                   xpath://button[@class="react-datepicker__navigation react-datepicker__navigation--${previous}"]
 
-Select month
-    [Arguments]     ${month}
-    select from list by label       class:react-datepicker__month-select            ${month}
-
-Select year
-    [Arguments]     ${year}
-    select from list by label       class:react-datepicker__year-select             ${year}
-
-Select day
-    [Arguments]     ${day}  ${month}    ${year}
-    click element                   xpath://div[@aria-label="Choose Wednesday, ${month} ${day}, ${year}"]
-
-Select days
-    [Arguments]     ${day}  ${month}    ${year}
-    click element                   //div[contains(@aria-label, '${month} ${day}, ${year}')]
+#Select month
+#    [Arguments]     ${month}
+#    select from list by label       class:react-datepicker__month-select            ${month}
+#
+#Select year
+#    [Arguments]     ${year}
+#    select from list by label       class:react-datepicker__year-select             ${year}
+#
+#Select day
+#    [Arguments]     ${day}  ${month}  ${year}
+#    click element                   xpath://div[@aria-label="Choose Wednesday, ${month} ${day}, ${year}"]
+#
+#Select days
+#    [Arguments]     ${day}  ${month}  ${year}
+#    click element                   //div[contains(@aria-label, '${month} ${day}, ${year}')]
 
 Clear Field Of Characters
     [Arguments]    ${field}    ${character count}
     FOR    ${index}    IN RANGE    ${character count}
         Press Keys    ${field}  BACKSPACE
     END
+
+
 
 Clear rowField Of Characters
     [Arguments]    ${field}    ${character count}
