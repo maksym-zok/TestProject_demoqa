@@ -17,7 +17,7 @@ ${rgba_red}                 rgba(220, 53, 69, 1)
 ${rgb_red}                  rgb(220, 53, 69)
 
 *** Test Cases ***
-Check practice form works with valid data
+Check whether user is able to submit form with valid data
     Enter First name                ${id:firstName}
     Enter Last name                 ${id:lastName}
     Enter user email                ${id:userEmail}
