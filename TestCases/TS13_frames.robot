@@ -4,34 +4,25 @@ Library                 Collections
 Library                 SeleniumLibrary
 Resource                ../Bindings/keywords.robot
 Resource                ../Resources/variables.robot
+Resource                ../Resources/TS13_frames_keywords.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/frames
 Test Teardown           close browser
 
 *** Test Cases ***
 Check whether 2 iframes are present on page
-    ${frames}                       get element count           //iframe
-    log to console                  ${frames} frames are on the page
-    ${ex_frames}                    set variable                2
-    should be equal as integers     ${frames}                   ${ex_frames}
+    Count frames
+    Verify number of frames         ${frames}   2
+
 
 Check whether iframes not empty
-    select frame                    frame1
-    current frame should contain    This is a sample page
-    unselect frame
-    select frame                    frame2
-    current frame should contain    This is a sample page
-    log to console                  iframes are not empty
+    Select frame                    ${frame_1}
+    Current frame should contain    ${text_in_frame}
+    Unselect frame
+    Select frame                    ${frame_1}
+    Current frame should contain    ${text_in_frame}
 
 Check whether iframes have required size
-    ${frame1_width}                 get element attribute       //iframe[@id="frame1"]  width
-    ${frame1_height}                get element attribute       //iframe[@id="frame1"]  height
-    ${exp_frame1_width}             set variable                500px
-    ${exp_frame1_height}            set variable                350px
-    should be equal as strings      ${exp_frame1_width}         ${frame1_width}
-    should be equal as strings      ${exp_frame1_height}        ${frame1_height}
-    ${frame2_width}                 get element attribute       //iframe[@id="frame2"]  width
-    ${frame2_height}                get element attribute       //iframe[@id="frame2"]  height
-    ${exp_frame2_width}             set variable                100px
-    ${exp_frame2_height}            set variable                100px
-    should be equal as strings      ${exp_frame2_width}         ${frame2_width}
-    should be equal as strings      ${exp_frame2_height}        ${frame2_height}
+    element attribute value should be   ${win_frame_1}  width   ${exp_frame1_width}
+    element attribute value should be   ${win_frame_1}  height  ${exp_frame1_height}
+    element attribute value should be   ${win_frame_2}  width   ${exp_frame2_width}
+    element attribute value should be   ${win_frame_2}  height  ${exp_frame2_height}

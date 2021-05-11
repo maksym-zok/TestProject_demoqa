@@ -121,3 +121,145 @@ output_useraddress="((//tbody/tr)[9]/td)[2]"
 output_user_state_city="((//tbody/tr)[10]/td)[2]"
 
 summary_table="//div[@class='modal-content']"
+
+#Browser_windows
+btn_new_tab="id:tabButton"
+btn_new_window="id:windowButton"
+btn_new_window_about_blank="id:messageWindowButton"
+
+#Alerts
+btn_alert="id:alertButton"
+btn_time_alert="id:timerAlertButton"
+btn_confirmation="id:confirmButton"
+btn_promt="id:promtButton"
+
+output_confirm_res="id:confirmResult"
+output_promt_res="id:promptResult"
+
+#Frames
+win_frames="//iframe"
+win_frame_1="//iframe[@id='frame1']"
+win_frame_2="//iframe[@id='frame2']"
+
+#Nested_frames
+frame_in_frame="//body/iframe"
+
+#Modal_dialogs
+btn_open_small_dialog="id:showSmallModal"
+btn_open_large_dialog="id:showLargeModal"
+btn_close_small_dialog="id:closeSmallModal"
+btn_close_large_dialog="id:closeLargeModal"
+btn_close_cross="//span[text()='×']"
+output_popup_title="//div[@class='modal-title h4']"
+small_modal_dialog="//div[@aria-labelledby='example-modal-sizes-title-sm']"
+large_modal_dialog="//div[@aria-labelledby='example-modal-sizes-title-lg']"
+
+#Accordian
+# xpath_collapse_check1="(//div[@id='section1Content']/..)[last()]"
+# xpath_collapse_check2="(//div[@id='section2Content']/..)[last()]"
+# xpath_collapse_check3="(//div[@id='section3Content']/..)[last()]"
+# btn_accordian_1="id:section1Heading"
+# btn_accordian_2="id:section2Heading"
+# btn_accordian_3="id:section3Heading"
+
+#Autocomplet
+txt_single_color="id:autoCompleteSingleInput"
+txt_multiple_colors="id:autoCompleteMultipleInput"
+output_single_color="//div[contains(@class, '-singleValue')]"
+output_multiple_colors="//div[contains(@class, '-multiValue')]"
+btn_remove="//div[contains(@class, '-value__remove')]"
+div_to_click="//span[text()='Type single color name']"
+
+#Date_picker
+btn_select_date_time="id:dateAndTimePickerInput"
+btn_dropdown_month="//span[@class='react-datepicker__month-read-view--down-arrow']"
+btn_dropdown_year="//div[@class='react-datepicker__year-read-view']"
+pick_time="//li[text()="
+pick_month="//div[text()="
+pick_year="//div[text()="
+pick_hours="//li[contains(text(), "
+btn_select_date="id:datePickerMonthYearInput"
+output_select_date_time="//input[contains(@value, "
+output_select_date="//input[contains(@value, "
+output_number_of_days="//div[contains(@aria-label, "
+to_click="//div[text()='Select Date']"
+
+#Slider
+btn_input_slider="//input[@class='range-slider range-slider--primary']"
+output_counter="id:sliderValue"
+
+#Progress_bar
+btn_start_stop="id:startStopButton"
+btn_reset="id:resetButton"
+output_percent="//div[contains(@class, 'progress-bar bg-')]"
+output_value_100="//div[text()='100%']"
+output_value_40="//div[text()='40%']"
+output_value_0="//div[text()='0%']"
+
+#Tabs
+btn_tab="//nav[@class='nav nav-tabs']/a"
+btn_tab_click="//a[contains(@aria-controls,'demo-tabpane-"
+tab_content="//div[contains(@aria-labelledby, 'demo-tab-"
+
+#Tool_tips
+btn_hover="id:toolTipButton"
+find_text="//div[text()="
+tooltip_inner="//div[@class='tooltip-inner']"
+
+#Menu
+btn_menu_item_a="//ul[@id='nav']//a"
+btn_menu_item_li="//ul[@id='nav']//li"
+
+#Sortable
+btn_list="//a[text()='List']"
+btn_grid="//a[text()='Grid']"
+grid_items="//div[@id='demo-tabpane-grid']//div[@class='list-group-item list-group-item-action']"
+list_items="//div[@id='demo-tabpane-list']//div[@class='list-group-item list-group-item-action']"
+list_items_by_text="//div[@id='demo-tabpane-list']//div[text()="
+grid_items_by_text="//div[@id='demo-tabpane-grid']//div[text()="
+
+#Selectable
+btn_selectable_list="//a[text()='List']"
+btn_selectable_grid="//a[text()='Grid']"
+list_selectable_items="//div[@id='demo-tabpane-list']//li"
+grid_selectable_items="//div[@id='demo-tabpane-grid']//li"
+
+#Resizable
+resizable_box_with_restriction="//div[@id='resizableBoxWithRestriction']"
+btn_resizable_box_with_restriction="//div[@id='resizableBoxWithRestriction']/span"
+resizable_box_without_restriction="//div[@id='resizable']"
+btn_resizable_box_without_restriction="//div[@id='resizable']/span"
+
+#Droppable
+btn_tab_revert="//a[text()='Revert Draggable']"
+btn_tab_simple="//a[text()='Simple']"
+btn_tab_accept="//a[text()='Accept']"
+btn_tab_prevent="//a[text()='Prevent Propogation']"
+box_tab_revertable="//div[@class='revertable-drop-container']/div[@id='droppable']"
+box_tab_simple="//div[@id='simpleDropContainer']/div[@id='droppable']"
+box_tab_accept="//div[@class='accept-drop-container']/div[@id='droppable']"
+box_not_gr_dropbox_tab_prevent="//div[@id='notGreedyDropBox']"
+box_gr_dropbox_tab_prevent="//div[@id='greedyDropBox']"
+box_not_gr_inner_dropbox_tab_prevent="//div[@id='notGreedyInnerDropBox']"
+box_text_tab_revertable="//div[@class='revertable-drop-container']/div[@id='droppable']/p"
+box_text_tab_simple="//div[@id='simpleDropContainer']/div[@id='droppable']/p"
+box_text_tab_accept="//div[@class='accept-drop-container']/div[@id='droppable']/p"
+box_text_not_gr_dropbox_tab_prevent="//div[@id='notGreedyDropBox']/p"
+box_text_not_gr_inner_dropbox_tab_prevent="//div[@id='notGreedyInnerDropBox']/p"
+box_text_gr_dropbox_tab_prevent="//div[@id='greedyDropBox']/p"
+revertable_el_tab_revertable="//div[@id='revertable']"
+notrevertable_el_tab_revertable="//div[@id='notRevertable']"
+draggable_el_tab_simple="//div[@id='draggable']"
+not_acceptable_el_tab_accept="//div[@id='notAcceptable']"
+acceptable_el_tab_accept="//div[@id='acceptable']"
+draggable_el_tab_prevent="//div[@id='dragBox']"
+
+#Dragabble
+btn_tab_simple_drag="//a[@id='draggableExample-tab-simple']"
+btn_tab_axis_drag="//a[@id='draggableExample-tab-axisRestriction']"
+btn_tab_container_drag="//a[@id='draggableExample-tab-containerRestriction']"
+box_tab_simple_drag="//div[@id='dragBox']"
+box_tab_axisX_drag="//div[@id='restrictedX']"
+box_tab_axisY_drag="//div[@id='restrictedY']"
+box_tab_container_wbox_drag="//div[@class='draggable ui-widget-content ui-draggable ui-draggable-handle']"
+box_tab_container_wparent_drag="//span[@class='ui-widget-header ui-draggable ui-draggable-handle']"

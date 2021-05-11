@@ -107,8 +107,6 @@ Verify absence of
     [Arguments]     ${output}
     page should not contain element                     ${output}
 
-
-
 Verify subjects
     [Arguments]     ${inputed_subject}
     ${res_plus_1}                   evaluate                        ${res}+1

@@ -76,37 +76,37 @@ Get CSS Property Value
     ${prop_val}=    Call Method       ${css}    value_of_css_property    ${attribute name}
     [Return]     ${prop_val}
 
-Open accordion
-    [Arguments]     ${xpath_collapse_get}     ${click}
-    ${element_accordion}=       Get CSS Property Value      ${xpath_collapse_get}    display
-    ${shown}                    set variable                block
-    ${hidden}                   set variable                none
-    IF                         '${element_accordion}' == '${shown}'
-           log to console       Accordion is shown
-           ELSE IF              '${element_accordion}' == '${hidden}'
-           click element        ${click}
-           wait until page contains element                   ${xpath_collapse_get}
-           ${element_accordion}=    Get CSS Property Value    ${xpath_collapse_get}    display
-           log to console       Accordion is shown
-     END
-Open accordion and check that other are closed
-    [Arguments]     ${xpath_collapse_get}   ${wait_xpath_collapse}     ${click}      ${xpath_collapse_check_1}   ${xpath_collapse_check_2}
-    ${element_accordion}=       Get CSS Property Value      ${xpath_collapse_get}       display
-    ${shown}                    set variable                block
-    ${hidden}                   set variable                none
-    IF                         '${element_accordion}' == '${shown}'
-           log to console       Accordion is shown
-           ELSE IF              '${element_accordion}' == '${hidden}'
-           click element        ${click}
-           wait until page contains element                 ${wait_xpath_collapse}
-           ${element_accordion}=    Get CSS Property Value  ${xpath_collapse_get}       display
-           log to console       Accordion is shown
-     END
-    ${element_accordion2}=       Get CSS Property Value     ${xpath_collapse_check_1}    display
-    ${element_accordion3}=       Get CSS Property Value     ${xpath_collapse_check_2}    display
-    should be equal as strings   ${element_accordion2}   ${hidden}
-    should be equal as strings   ${element_accordion3}   ${hidden}
-    log to console               Only one accordion is opened
+#Open accordion
+#    [Arguments]     ${xpath_collapse_get}     ${click}
+#    ${element_accordion}=       Get CSS Property Value      ${xpath_collapse_get}    display
+#    ${shown}                    set variable                block
+#    ${hidden}                   set variable                none
+#    IF                         '${element_accordion}' == '${shown}'
+#           log to console       Accordion is shown
+#           ELSE IF              '${element_accordion}' == '${hidden}'
+#           click element        ${click}
+#           wait until page contains element                   ${xpath_collapse_get}
+#           ${element_accordion}=    Get CSS Property Value    ${xpath_collapse_get}    display
+#           log to console       Accordion is shown
+#     END
+#Open accordion and check that other are closed
+#    [Arguments]     ${xpath_collapse_get}   ${wait_xpath_collapse}     ${click}      ${xpath_collapse_check_1}   ${xpath_collapse_check_2}
+#    ${element_accordion}=       Get CSS Property Value      ${xpath_collapse_get}       display
+#    ${shown}                    set variable                block
+#    ${hidden}                   set variable                none
+#    IF                         '${element_accordion}' == '${shown}'
+#           log to console       Accordion is shown
+#           ELSE IF              '${element_accordion}' == '${hidden}'
+#           click element        ${click}
+#           wait until page contains element                 ${wait_xpath_collapse}
+#           ${element_accordion}=    Get CSS Property Value  ${xpath_collapse_get}       display
+#           log to console       Accordion is shown
+#     END
+#    ${element_accordion2}=       Get CSS Property Value     ${xpath_collapse_check_1}    display
+#    ${element_accordion3}=       Get CSS Property Value     ${xpath_collapse_check_2}    display
+#    should be equal as strings   ${element_accordion2}   ${hidden}
+#    should be equal as strings   ${element_accordion3}   ${hidden}
+#    log to console               Only one accordion is opened
 
 Calendar navigate
     [Arguments]     ${previous}
@@ -128,12 +128,12 @@ Calendar navigate
 #Select days
 #    [Arguments]     ${day}  ${month}  ${year}
 #    click element                   //div[contains(@aria-label, '${month} ${day}, ${year}')]
-
-Clear Field Of Characters
-    [Arguments]    ${field}    ${character count}
-    FOR    ${index}    IN RANGE    ${character count}
-        Press Keys    ${field}  BACKSPACE
-    END
+#
+#Clear Field Of Characters
+#    [Arguments]    ${field}    ${character count}
+#    FOR    ${index}    IN RANGE    ${character count}
+#        Press Keys    ${field}  BACKSPACE
+#    END
 
 
 
@@ -152,19 +152,19 @@ Send element to
 #    should be equal as strings          ${element_before_top_position}    0px
     drag and drop by offset                     ${locator}     ${x}   ${y}
 
-Validate the element position
-    [Arguments]     ${locator}   ${x}   ${y}
-    ${element_after_left_position}        Get CSS Property Value          ${locator}           left
-    ${element_after_top_position}        Get CSS Property Value           ${locator}           top
-    should be equal as strings          ${element_after_left_position}    ${x}px
-    should be equal as strings          ${element_after_top_position}    ${y}px
+#Validate the element position
+#    [Arguments]     ${locator}   ${x}   ${y}
+#    ${element_after_left_position}        Get CSS Property Value          ${locator}           left
+#    ${element_after_top_position}        Get CSS Property Value           ${locator}           top
+#    should be equal as strings          ${element_after_left_position}    ${x}px
+#    should be equal as strings          ${element_after_top_position}    ${y}px
 
-Validation of an element with invalid expected result
-    [Arguments]     ${locator}   ${x}   ${y}
-    ${element_after_left_position}        Get CSS Property Value          ${locator}           left
-    ${element_after_top_position}        Get CSS Property Value           ${locator}           top
-    should not be equal as strings          ${element_after_left_position}    ${x}px
-    should not be equal as strings          ${element_after_top_position}    ${y}px
+#Validation of an element with invalid expected result
+#    [Arguments]     ${locator}   ${x}   ${y}
+#    ${element_after_left_position}        Get CSS Property Value          ${locator}           left
+#    ${element_after_top_position}        Get CSS Property Value           ${locator}           top
+#    should not be equal as strings          ${element_after_left_position}    ${x}px
+#    should not be equal as strings          ${element_after_top_position}    ${y}px
 
 Login
     [Arguments]    ${username}    ${password}

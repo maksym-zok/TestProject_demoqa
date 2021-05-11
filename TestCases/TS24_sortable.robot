@@ -4,90 +4,59 @@ Library                 Collections
 Library                 SeleniumLibrary
 Resource                ../Bindings/keywords.robot
 Resource                ../Resources/variables.robot
+Resource                ../Resources/TS24_sortable_keywords.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/sortable
 Test Teardown           close browser
 
 *** Test Cases ***
-Check whether user is abel to move elements up and down in List
-    click element                       //a[text()='List']
-    element attribute value should be   //a[text()='List']  aria-selected   true
-    ${elements}     get element count   //div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"]
+Check whether user is abel to move elements in List
+    Open List
+    Count list items    ${list_items}
     FOR     ${res}  IN RANGE    1   ${elements}
-        ${text1}                    get text        (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        ${res+1}                    evaluate        ${res}+1
-        ${text2}                    get text        (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${res+1}]
-        drag and drop               //div[@id="demo-tabpane-list"]//div[text()='${text1}']  //div[@id="demo-tabpane-list"]//div[text()='${text2}']
-        ${text1_after}              get text        (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        ${text2_after}              get text        (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${res+1}]
-        should be equal as strings  ${text1}        ${text2_after}
-        should be equal as strings  ${text2}        ${text1_after}
-    END
-    FOR     ${res}  IN RANGE    1    ${elements}
-        ${text1}                    get text        (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${elements}]
-        ${text2}                    get text        (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        drag and drop               //div[@id="demo-tabpane-list"]//div[text()='${text1}']  //div[@id="demo-tabpane-list"]//div[text()='${text2}']
-        ${res+1}                    evaluate        ${res}+1
-        ${text1_after}              get text        (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${${res+1}}]
-        ${text2_after}              get text        (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        should be equal as strings  ${text1}        ${text2_after}
-        should be equal as strings  ${text2}        ${text1_after}
+        Set global variable         ${res}
+        Get text of elements bfr    ${list_items}
+        Drag and drop               (${list_items})[${res}]  (${list_items})[${res+1}]
+        Get text of elements aftr   ${list_items}
+        Verify elements position
     END
 
 Check whether user is unable to move elements out of the list
-    click element                       //a[text()='List']
-    element attribute value should be   //a[text()='List']  aria-selected   true
-    ${elements}                         get element count   //div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"]
-    ${elements+1}                       evaluate    ${elements}+1
-        FOR     ${res}  IN RANGE    1   ${elements+1}
-        ${text1}                    get text        (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        drag and drop by offset                     //div[@id="demo-tabpane-list"]//div[text()='${text1}']     600   -300
-        element text should be                      (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[1]  ${text1}
-        drag and drop by offset                     //div[@id="demo-tabpane-list"]//div[text()='${text1}']     -600   -300
-        element text should be                      (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[1]  ${text1}
-        drag and drop by offset                     //div[@id="demo-tabpane-list"]//div[text()='${text1}']     -600   300
-        element text should be                      (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${elements}]  ${text1}
-        drag and drop by offset                     //div[@id="demo-tabpane-list"]//div[text()='${text1}']     600   300
-        element text should be                      (//div[@id="demo-tabpane-list"]//div[@class="list-group-item list-group-item-action"])[${elements}]  ${text1}
+    Open List
+    Count list items                ${list_items}
+    FOR     ${res}  IN RANGE    1   ${elements}
+        Get text of element                         (${list_items})[${res}]
+        Drag and drop to bottom right corner        ${list_items_by_text}'${text1}']
+        Verify name of the first element            ${list_items}
+        Drag and drop to bottom left corner         ${list_items_by_text}'${text1}']
+        Verify name of the first element            ${list_items}
+        Drag and drop to top left corner            ${list_items_by_text}'${text1}']
+        Verify name of the last element             ${list_items}
+        Drag and drop to top right corner           ${list_items_by_text}'${text1}']
+        Verify name of the last element             ${list_items}
     END
 
 Check whether user is abel to move elements in Grid
-    click element                       //a[text()='Grid']
-    element attribute value should be   //a[text()='Grid']  aria-selected   true
-    ${elements}     get element count   //div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"]
+    Open Grid
+    Count grid items   ${grid_items}
     FOR     ${res}  IN RANGE    1   ${elements}
-        ${text1}                    get text        (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        ${res+1}                    evaluate        ${res}+1
-        ${text2}                    get text        (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${res+1}]
-        drag and drop               //div[@id="demo-tabpane-grid"]//div[text()='${text1}']  //div[@id="demo-tabpane-grid"]//div[text()='${text2}']
-        ${text1_after}              get text        (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        ${text2_after}              get text        (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${res+1}]
-        should be equal as strings  ${text1}        ${text2_after}
-        should be equal as strings  ${text2}        ${text1_after}
-    END
-    FOR     ${res}  IN RANGE    1    ${elements}
-        ${text1}                    get text        (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${elements}]
-        ${text2}                    get text        (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        drag and drop               //div[@id="demo-tabpane-grid"]//div[text()='${text1}']  //div[@id="demo-tabpane-grid"]//div[text()='${text2}']
-        ${res+1}                    evaluate        ${res}+1
-        ${text1_after}              get text        (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${${res+1}}]
-        ${text2_after}              get text        (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        should be equal as strings  ${text1}        ${text2_after}
-        should be equal as strings  ${text2}        ${text1_after}
+        Set global variable         ${res}
+        Get text of elements bfr    ${grid_items}
+        Drag and drop               (${grid_items})[${res}]  (${grid_items})[${res+1}]
+        Get text of elements aftr   ${grid_items}
+        Verify elements position
     END
 
 Check whether user is unable to move elements out of the grid
-    click element                       //a[text()='Grid']
-    element attribute value should be   //a[text()='Grid']  aria-selected   true
-    ${elements}                         get element count   //div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"]
-    ${elements+1}                       evaluate    ${elements}+1
-        FOR     ${res}  IN RANGE    1   ${elements+1}
-        ${text1}                    get text        (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${res}]
-        drag and drop by offset                     //div[@id="demo-tabpane-grid"]//div[text()='${text1}']     600   -300
-        element text should be                      (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[1]  ${text1}
-        drag and drop by offset                     //div[@id="demo-tabpane-grid"]//div[text()='${text1}']     -300   -300
-        element text should be                      (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[1]  ${text1}
-        drag and drop by offset                     //div[@id="demo-tabpane-grid"]//div[text()='${text1}']     -300   300
-        element text should be                      (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${elements}]  ${text1}
-        drag and drop by offset                     //div[@id="demo-tabpane-grid"]//div[text()='${text1}']     300   300
-        element text should be                      (//div[@id="demo-tabpane-grid"]//div[@class="list-group-item list-group-item-action"])[${elements}]  ${text1}
+    Open Grid
+    Count grid items   ${grid_items}
+    FOR     ${res}  IN RANGE    1   ${elements}
+        Get text of element                         (${grid_items})[${res}]
+        Drag and drop to bottom right corner        ${grid_items_by_text}'${text1}']
+        Verify name of the first element            ${grid_items}
+        Drag and drop to bottom left corner         ${grid_items_by_text}'${text1}']
+        Verify name of the first element            ${grid_items}
+        Drag and drop to top left corner            ${grid_items_by_text}'${text1}']
+        Verify name of the last element             ${grid_items}
+        Drag and drop to top right corner           ${grid_items_by_text}'${text1}']
+        Verify name of the last element             ${grid_items}
     END

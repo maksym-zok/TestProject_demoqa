@@ -3,31 +3,27 @@ Library                 BuiltIn
 Library                 Collections
 Library                 RequestsLibrary
 Library                 SeleniumLibrary
-Resource        ../Bindings/keywords.robot
-Resource        ../Resources/variables.robot
+Resource                ../Bindings/keywords.robot
+Resource                ../Resources/variables.robot
+Resource                ../Resources/TS11_browser_windows_keywords.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/browser-windows
 Test Teardown           close browser
 
 *** Test Cases ***
 Check whether button opens new tab
     ${current}                      get window handles
-    log to console                  ${current}
-    click button                    id:tabButton
+    Click button                    ${btn_new_tab}
     ${next}                         get window handles
-    log to console                  ${next}
-    should not be equal             ${current}  ${next}
+    Verify tabs                     ${current}  ${next}
 
 Check whether button opens new window
     ${current}                      get window handles
-    log to console                  ${current}
-    click button                    id:windowButton
+    Click button                    ${btn_new_window}
     ${next}                         get window handles
-    log to console                  ${next}
-    should not be equal             ${current}  ${next}
+    Verify windows                  ${current}  ${next}
 
-Check_whether_button_opens_aboutblank_window
-    click button                    xpath://button[@id='messageWindowButton']
+Check whether button opens aboutblank window
+    Click button                    ${btn_new_window_about_blank}
     ${WindowsHandles}               get window handles
-    set selenium implicit wait      2
     switch window                   ${WindowsHandles}[1]
-    title should be                 ${EMPTY}
+    Title should be                 ${EMPTY}

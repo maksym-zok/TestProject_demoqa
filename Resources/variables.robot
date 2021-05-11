@@ -3,6 +3,14 @@ Library                 Collections
 Library                 RequestsLibrary
 
 *** Variables ***
+#xpath_collapse_check1="(//div[@id='section1Content']/..)[last()]"
+#xpath_collapse_check2="(//div[@id='section2Content']/..)[last()]"
+#xpath_collapse_check3="(//div[@id='section3Content']/..)[last()]"
+#btn_accordian_1="id:section1Heading"
+#btn_accordian_2="id:section2Heading"
+#btn_accordian_3="id:section3Heading"
+@{XPATH_COLLAPSE_CHECK}  0  (//div[@id='section1Content']/..)[last()]  (//div[@id='section2Content']/..)[last()]  (//div[@id='section3Content']/..)[last()]
+@{BTN_ACCORDIAN}  0  id:section1Heading  id:section2Heading  id:section3Heading
 @{STATE}    NCR   Uttar Pradesh     Haryana  Rajasthan
 @{STAT}    NC   Uttar Prades     Harya  Rajasth
 @{STATE_NCR}    Delhi   Gurgaon  Noida
@@ -96,3 +104,60 @@ ${code_400}                 Link has responded with staus 400 and status text Ba
 ${code_401}                 Link has responded with staus 401 and status text Unauthorized
 ${code_403}                 Link has responded with staus 403 and status text Forbidden
 ${code_404}                 Link has responded with staus 404 and status text Not Found
+
+${frame_1}                  frame1
+${frame_2}                  frame2
+${text_in_frame}            This is a sample page
+${exp_frame1_width}         500px
+${exp_frame1_height}        350px
+${exp_frame2_width}         100px
+${exp_frame2_height}        100px
+${parent_frame_txt}         Parent frame
+${child_frame_txt}          Child Iframe
+
+${text_small}               Small
+${text_large}               Large
+
+${shown}                    block
+${hidden}                   none
+
+${valid_date}               02/03/2021
+${invalid_date}             40/40/22
+${invalid_date_with_char}   4kls/40sdf0/22sd
+
+${valid_date_and_time}      April 23, 2021 12:45 PM
+${invalid_date_and_time}    Aprasdil 2as3, 202as1 12asd:45 Pvfd M
+
+${invalid_date_to_convert}  Apr 23, 21 12:45 PM
+${valid_converted}          April 23, 2021 12:45 PM
+
+${51%_value}                51
+${100%_value}               100
+${0%_value}                 0
+${move_to_51%}              6
+${move_to_100%}             325
+${move_to_0%}               -325
+${move_above_100%}          425
+${move_below_0%}            -425
+
+${0%}                       0%
+${100%}                     100%
+${40%}                      40%
+
+${dropped}                  Dropped!
+${drop_here}                Drop here
+${inner_drop}               Inner droppable (not greedy)
+${outer_drop}               Outer droppable
+
+${left_200}                 -200
+${right_800}                800
+${right_200}                200
+${right_50}                 50
+${right_5}                  5
+${bottom_200}               200
+${bottom_86}                86
+${bottom_50}                50
+${bottom_5}                 5
+${bottom_edge_within_the_box}  106
+${top_200}                  -200
+${zero}                     0

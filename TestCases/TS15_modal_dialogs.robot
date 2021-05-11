@@ -4,38 +4,57 @@ Library                 Collections
 Library                 SeleniumLibrary
 Resource                ../Bindings/keywords.robot
 Resource                ../Resources/variables.robot
+Resource                ../Resources/TS15_modal_dialogs_keywords.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/modal-dialogs
 Test Teardown           close browser
 
 *** Test Cases ***
-Check whether popup dialogs are invisiable
-    element should not be visible   //div[@aria-labelledby="example-modal-sizes-title-sm"]
-    element should not be visible   //div[@aria-labelledby="example-modal-sizes-title-lg"]
+Check whether small popup dialog is closed
+    Verify that dialog is closed    ${small_modal_dialog}
 
-Check whether popup dialogs are visible after click
-    click element                   //button[text()='Small modal']
-    wait until element is visible   //div[@aria-labelledby="example-modal-sizes-title-sm"]
-    click element                   //span[text()='×']
-    click element                   //button[text()='Large modal']
-    wait until element is visible   //div[@aria-labelledby="example-modal-sizes-title-lg"]
+Check whether large popup dialog is closed
+    Verify that dialog is closed    ${large_modal_dialog}
 
-Check whether popup dialogs are invisiable after clossing them
-    click element                   //button[text()='Small modal']
-    click button                    closeSmallModal
-    wait until element is not visible   //div[@aria-labelledby="example-modal-sizes-title-sm"]
-    click button                    //button[text()='Large modal']
-    click button                    closeLargeModal
-    wait until element is not visible   //div[@aria-labelledby="example-modal-sizes-title-lg"]
+Check whether small popup dialogs is visible after click
+    Open popup dialog               ${btn_open_small_dialog}
+    Verify that dialog is open      ${small_modal_dialog}
 
-Check whether clicking on the buttons opens popup dialogs related to these buttons
-    ${text_small}                   set variable                            Small
-    wait until element contains     //button[@id="showSmallModal"]          ${text_small}
-    click element                   //button[@id="showSmallModal"]
-    wait until element contains     //div[@class="modal-title h4"]          ${text_small}
-    click element                   //span[text()='×']
-    ${text_large}                   set variable                            Large
-    wait until element contains     //button[@id="showLargeModal"]          ${text_large}
-    click element                   //button[@id="showLargeModal"]
-    wait until element contains     //div[@class="modal-title h4"]          ${text_large}
+Check whether large popup dialogs is visible after click
+    Open popup dialog               ${btn_open_large_dialog}
+    Verify that dialog is open      ${large_modal_dialog}
+
+Check whether small popup dialog is invisiable after clossing
+    Open popup dialog               ${btn_open_small_dialog}
+    Verify that dialog is open      ${small_modal_dialog}
+    Close popup dialog              ${btn_close_small_dialog}
+    Verify that dialog is closed    ${small_modal_dialog}
+
+Check whether large popup dialog is invisiable after clossing
+    Open popup dialog               ${btn_open_large_dialog}
+    Verify that dialog is open      ${large_modal_dialog}
+    Close popup dialog              ${btn_close_large_dialog}
+    Verify that dialog is closed    ${large_modal_dialog}
+
+Check whether user is able to close small popup dialog using cross button
+    Open popup dialog               ${btn_open_small_dialog}
+    Verify that dialog is open      ${small_modal_dialog}
+    Close popup dialog              ${btn_close_cross}
+    Verify that dialog is closed    ${small_modal_dialog}
+
+Check whether user is able to close large popup dialog using cross button
+    Open popup dialog               ${btn_open_large_dialog}
+    Verify that dialog is open      ${large_modal_dialog}
+    Close popup dialog              ${btn_close_cross}
+    Verify that dialog is closed    ${large_modal_dialog}
+
+Check whether clicking on the small dialog button opens popup dialogs related to this button
+    Open popup dialog               ${btn_open_small_dialog}
+    Verify that dialog is open      ${small_modal_dialog}
+    Verify the title                ${text_small}
+
+Check whether clicking on the large dialog button opens popup dialogs related to this button
+    Open popup dialog               ${btn_open_large_dialog}
+    Verify that dialog is open      ${large_modal_dialog}
+    Verify the title                ${text_large}
 
 

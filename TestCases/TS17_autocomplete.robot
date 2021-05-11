@@ -4,73 +4,52 @@ Library                 Collections
 Library                 SeleniumLibrary
 Resource                ../Bindings/keywords.robot
 Resource                ../Resources/variables.robot
+Resource                ../Resources/TS17_autocomplete_keywords.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/auto-complete
 Test Teardown           close browser
 
 *** Test Cases ***
 Check whether single color field accepts valid data
     FOR    ${res}    IN RANGE    0    8
-            click element                   id:autoCompleteSingleInput
-            input text                      id:autoCompleteSingleInput      ${LIST}[${res}]
-            press keys                      id:autoCompleteSingleInput      ENTER
-            ${color}                        get text                        //div[@class="auto-complete__single-value css-1uccc91-singleValue"]
-            should be equal as strings      ${color}                        ${LIST}[${res}]
+            Enter color to single field     ${LIST}[${res}]
+            Verify valid color              ${output_single_color}  ${LIST}[${res}]
     END
 
 Check whether single color field doesnt accept invalid data
     FOR    ${res}    IN RANGE    0    8
-            click element                   id:autoCompleteSingleInput
-            input text                      id:autoCompleteSingleInput      ${INVALID_COLOR}[${res}]
-            press keys                      id:autoCompleteSingleInput      ENTER
-            click element                   //span[text()="Type single color name"]
-            ${color}                        get text                        (//div[contains(@class, 'auto-complete__value-container')])[2]/div
-            should be equal as strings      ${color}                        ${EMPTY}
+            Enter color to single field     ${INVALID_COLOR}[${res}]
+            Verify empty color fiel         ${output_single_color}
     END
 
 Check whether single color field autocompletes valid words without the last letter
     FOR    ${res}    IN RANGE    0    8
-            click element                   id:autoCompleteSingleInput
-            input text                      id:autoCompleteSingleInput      ${LIS}[${res}]
-            press keys                      id:autoCompleteSingleInput      ENTER
-            ${color}                        get text                        //div[@class="auto-complete__single-value css-1uccc91-singleValue"]
-            should be equal as strings      ${color}                        ${LIST}[${res}]
+            Enter color to single field     ${LIS}[${res}]
+            Verify valid color              ${output_single_color}  ${LIST}[${res}]
     END
 
 Check whether multiple color field accepts valid data
     FOR    ${res}    IN RANGE    0    8
-            input text                      id:autoCompleteMultipleInput    ${LIST}[${res}]
-            press keys                      id:autoCompleteMultipleInput    ENTER
-            ${res_plus_1}                   evaluate                        ${res}+1
-            ${color}                        get text                        (//div[contains(@class, '-multiValue auto-complete__multi-value')])[${res_plus_1}]
-            should be equal as strings      ${color}                        ${LIST}[${res}]
+            set global variable             ${res}
+            Enter color to multiple field   ${LIST}[${res}]
+            Verify valid colors             ${LIST}[${res}]
     END
 
 Check whether multiple color field autocompletes valid words without the last letter
     FOR    ${res}    IN RANGE    0    8
-            input text                      id:autoCompleteMultipleInput    ${LIS}[${res}]
-            press keys                      id:autoCompleteMultipleInput    ENTER
-            ${res_plus_1}                   evaluate                        ${res}+1
-            ${color}                        get text                        (//div[contains(@class, '-multiValue auto-complete__multi-value')])[${res_plus_1}]
-            should be equal as strings      ${color}                        ${LIST}[${res}]
+            set global variable             ${res}
+            Enter color to multiple field   ${LIS}[${res}]
+            Verify valid colors             ${LIST}[${res}]
     END
 
 Check whether multiple color field doesnt accept invalid data
     FOR    ${res}    IN RANGE    0    8
-            input text                      id:autoCompleteMultipleInput    ${INVALID_COLOR}[${res}]
-            press keys                      id:autoCompleteMultipleInput    ENTER
-            click element                   //span[text()='Type multiple color names']
-#            validate whether the element class corresponds to an empty element class
-            element attribute value should be   (//div[@id="autoCompleteMultipleContainer"]/div/div)[1]     class   auto-complete__value-container auto-complete__value-container--is-multi css-1hwfws3
+            Enter color to multiple field   ${INVALID_COLOR}[${res}]
+            Verify empty color field        ${output_multiple_colors}
     END
 
 Check whether user is able to remove entered valid color from multiple color field
-    FOR    ${res}    IN RANGE    0    8
-            input text                      id:autoCompleteMultipleInput    ${LIST}[${res}]
-            press keys                      id:autoCompleteMultipleInput    ENTER
-            ${color}                        get text                        //div[contains(@class, '-multiValue auto-complete__multi-value')]
-            should be equal as strings      ${color}                        ${LIST}[${res}]
-            click element                   //div[contains(@class, 'auto-complete__multi-value__remove')]
-#           validate whether the element class corresponds to an empty element class
-            element attribute value should be   (//div[@id="autoCompleteMultipleContainer"]/div/div)[1]     class   auto-complete__value-container auto-complete__value-container--is-multi css-1hwfws3
-    END
+    Enter color to multiple field           ${LIST}[1]
+    Verify valid color                      ${output_multiple_colors}   ${LIST}[1]
+    Delete color
+    Verify empty color field                ${output_multiple_colors}
 

@@ -4,19 +4,19 @@ Library                 Collections
 Library                 SeleniumLibrary
 Resource                ../Bindings/keywords.robot
 Resource                ../Resources/variables.robot
+Resource                ../Resources/TS16_accordian_keywords.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/accordian
 Test Teardown           close browser
 
 *** Test Cases ***
 Сheck whether the accordions can be opened
-    Open accordion  (//div[@id="section1Content"]/..)[last()]   //div[@id="section1Heading"]
-    Open accordion  (//div[@id="section2Content"]/..)[last()]   //div[@id="section2Heading"]
-    Open accordion  (//div[@id="section3Content"]/..)[last()]   //div[@id="section3Heading"]
+    FOR  ${res}  IN RANGE   1  4
+        Open accordion  ${XPATH_COLLAPSE_CHECK}[${res}]   ${BTN_ACCORDIAN}[${res}]
+        Verify that accordion is opened  ${XPATH_COLLAPSE_CHECK}[${res}]
+    END
 
-Check whether only one accordion can be opened
-    ${xpath_collapse_check1}    set variable    (//div[@id="section1Content"]/..)[last()]
-    ${xpath_collapse_check2}    set variable    (//div[@id="section2Content"]/..)[last()]
-    ${xpath_collapse_check3}    set variable    (//div[@id="section3Content"]/..)[last()]
-    Open accordion and check that other are closed  ${xpath_collapse_check1}    //div[@id="section1Content"]/../../div[@class="collapse show"]   //div[@id="section1Heading"]    ${xpath_collapse_check2}   ${xpath_collapse_check3}
-    Open accordion and check that other are closed  ${xpath_collapse_check2}    //div[@id="section2Content"]/../../div[@class="collapse show"]   //div[@id="section2Heading"]    ${xpath_collapse_check1}   ${xpath_collapse_check3}
-    Open accordion and check that other are closed  ${xpath_collapse_check3}    //div[@id="section3Content"]/../../div[@class="collapse show"]   //div[@id="section3Heading"]    ${xpath_collapse_check1}   ${xpath_collapse_check2}
+Check that the other accordians are closed when one is opened
+    Open accordion  ${XPATH_COLLAPSE_CHECK}[1]   ${BTN_ACCORDIAN}[1]
+    Verify that accordion is opened  ${XPATH_COLLAPSE_CHECK}[1]
+    Verify that accordion is closed  ${XPATH_COLLAPSE_CHECK}[2]
+    Verify that accordion is closed  ${XPATH_COLLAPSE_CHECK}[3]

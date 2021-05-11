@@ -4,179 +4,147 @@ Library                 Collections
 Library                 SeleniumLibrary
 Resource                ../Bindings/keywords.robot
 Resource                ../Resources/variables.robot
+Resource                ../Resources/TS27_droppable_keywords.robot
 Test Setup              Start browser and maximaze  https://demoqa.com/droppable
 Test Teardown           close browser
 
 *** Test Cases ***
 Check whether user is able to drop element DRAG ME to DROP HERE element in SIMPLE tab
-    click element                       //a[text()='Simple']
-    element attribute value should be   //a[text()='Simple']            aria-selected                                                   true
-    ${element_before_background}        Get CSS Property Value          //div[@id="simpleDropContainer"]/div[@id="droppable"]           background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    ${element_before_text}              element text should be          //div[@id="simpleDropContainer"]/div[@id="droppable"]/p         Drop here
-    drag and drop                       //div[@id="draggable"]          //div[@id="simpleDropContainer"]/div[@id="droppable"]
-    wait until element contains         //div[@id="simpleDropContainer"]/div[@id="droppable"]/p                                         Dropped!
-    ${element_after_background}         Get CSS Property Value          //div[@class="drop-box ui-droppable ui-state-highlight"]        background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
+    Open tab                            ${btn_tab_simple}
+    Get background color before drop    ${box_tab_simple}
+    Verify text before drop             ${box_text_tab_simple}          ${drop_here}
+    Drag and drop                       ${draggable_el_tab_simple}      ${box_tab_simple}
+    Verify text after drop              ${box_text_tab_simple}          ${dropped}
+    Get background color after drop     ${box_tab_simple}
+    Verify color changing               ${element_before_background}    ${element_after_background}
 
 Check whether user is able to take out the element DRAG ME from DROPPED element in SIMPLE tab
-    click element                       //a[text()='Simple']
-    element attribute value should be   //a[text()='Simple']            aria-selected                                                   true
-    ${element_before_background}        Get CSS Property Value          //div[@id="simpleDropContainer"]/div[@id="droppable"]           background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    ${element_before_text}              element text should be          //div[@id="simpleDropContainer"]/div[@id="droppable"]/p         Drop here
-    drag and drop                       //div[@id="draggable"]          //div[@id="simpleDropContainer"]/div[@id="droppable"]
-    wait until element contains         //div[@id="simpleDropContainer"]/div[@id="droppable"]/p                                         Dropped!
-    ${element_after_background}         Get CSS Property Value          //div[@id="simpleDropContainer"]/div[@id="droppable"]           background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    drag and drop by offset             //div[@id="draggable"]          -200     0
-    ${position_after}                   Get CSS Property Value          //div[@id="draggable"]                                          left
-    should be equal as strings          ${position_after}               153px
+    Open tab                            ${btn_tab_simple}
+    Get background color before drop    ${box_tab_simple}
+    Verify text before drop             ${box_text_tab_simple}          ${drop_here}
+    Drag and drop                       ${draggable_el_tab_simple}      ${box_tab_simple}
+    Verify text after drop              ${box_text_tab_simple}          ${dropped}
+    Get background color after drop     ${box_tab_simple}
+    Verify color changing               ${element_before_background}    ${element_after_background}
+    drag and drop by offset             ${draggable_el_tab_simple}      -200     0
+    Verify element position             ${draggable_el_tab_simple}      153px
 
 Check whether DROPPED element doesnt change its condition when user takes out DRAG ME element off DROPPED, in Simple tab
-    click element                       //a[text()='Simple']
-    element attribute value should be   //a[text()='Simple']            aria-selected                                                   true
-    ${element_before_background}        Get CSS Property Value          //div[@id="simpleDropContainer"]/div[@id="droppable"]           background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    ${element_before_text}              element text should be          //div[@id="simpleDropContainer"]/div[@id="droppable"]/p         Drop here
-    drag and drop                       //div[@id="draggable"]          //div[@id="simpleDropContainer"]/div[@id="droppable"]
-    wait until element contains         //div[@id="simpleDropContainer"]/div[@id="droppable"]/p                                         Dropped!
-    ${element_after_background}         Get CSS Property Value          //div[@id="simpleDropContainer"]/div[@id="droppable"]           background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    drag and drop by offset             //div[@id="draggable"]          -200     0
-    ${position_after}                   Get CSS Property Value          //div[@id="draggable"]                                          left
-    should be equal as strings          ${position_after}               153px
-    ${element_after_background_2}       Get CSS Property Value          //div[@id="simpleDropContainer"]/div[@id="droppable"]           background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    element text should be              //div[@id="simpleDropContainer"]/div[@id="droppable"]/p                                         Dropped!
+    Open tab                            ${btn_tab_simple}
+    Get background color before drop    ${box_tab_simple}
+    Verify text before drop             ${box_text_tab_simple}          ${drop_here}
+    Drag and drop                       ${draggable_el_tab_simple}      ${box_tab_simple}
+    Verify text after drop              ${box_text_tab_simple}          ${dropped}
+    Get background color after drop     ${box_tab_simple}
+    Verify color changing               ${element_before_background}    ${element_after_background}
+    Get background color before drop    ${box_tab_simple}
+    drag and drop by offset             ${draggable_el_tab_simple}      -200     0
+    Verify element position             ${draggable_el_tab_simple}      153px
+    Get background color after drop     ${box_tab_simple}
+    Verify color is not changing        ${element_before_background}    ${element_after_background}
 
 Check whether DROP HERE element doesnt change its condition when user inserts NOT ACCEPTABLE element in DROP HERE, in ACCEPT tab
-    click element                       //a[text()='Accept']
-    element attribute value should be   //a[text()='Accept']            aria-selected                                                       true
-    ${element_before_background}        Get CSS Property Value          //div[@class="accept-drop-container"]/div[@id="droppable"]          background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    ${element_before_text}              element text should be          //div[@class="accept-drop-container"]/div[@id="droppable"]/p        Drop here
-    drag and drop                       //div[@id="notAcceptable"]      //div[@class="accept-drop-container"]/div[@id="droppable"]
-    ${element_after_background}         Get CSS Property Value          //div[@class="accept-drop-container"]/div[@id="droppable"]          background-color
-    should be equal as strings          ${element_after_background}     rgba(0, 0, 0, 0)
+    Open tab                            ${btn_tab_accept}
+    Get background color before drop    ${box_tab_accept}
+    Verify text before drop             ${box_text_tab_accept}              ${drop_here}
+    Drag and drop                       ${not_acceptable_el_tab_accept}     ${box_tab_accept}
+    Verify text after drop              ${box_text_tab_accept}              ${drop_here}
+    Get background color after drop     ${box_tab_accept}
+    Verify color is not changing        ${element_before_background}        ${element_after_background}
 
 Check whether DROP HERE element changes its condition when user inserts ACCEPTABLE element in DROP HERE, in ACCEPT tab
-    click element                       //a[text()='Accept']
-    element attribute value should be   //a[text()='Accept']            aria-selected   true
-    ${element_before_background}        Get CSS Property Value          //div[@class="accept-drop-container"]/div[@id="droppable"]          background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    ${element_before_text}              element text should be          //div[@class="accept-drop-container"]/div[@id="droppable"]          Drop here
-    drag and drop                       //div[@id="acceptable"]         //div[@class="accept-drop-container"]/div[@id="droppable"]
-    ${element_after_background}         Get CSS Property Value          //div[@class="accept-drop-container"]/div[@id="droppable"]          background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
+    Open tab                            ${btn_tab_accept}
+    Get background color before drop    ${box_tab_accept}
+    Verify text before drop             ${box_text_tab_accept}          ${drop_here}
+    Drag and drop                       ${acceptable_el_tab_accept}     ${box_tab_accept}
+    Verify text after drop              ${box_text_tab_accept}          ${dropped}
+    Get background color after drop     ${box_tab_accept}
+    Verify color changing               ${element_before_background}    ${element_after_background}
 
 Check whether DROPPED element doesnt change its condition when user takes out ACCEPTABLE element off DROPPED, in ACCEPT tab
-    click element                       //a[text()='Accept']
-    element attribute value should be   //a[text()='Accept']            aria-selected                                                       true
-    ${element_before_background}        Get CSS Property Value          //div[@class="accept-drop-container"]/div[@id="droppable"]          background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    ${element_before_text}              element text should be          //div[@class="accept-drop-container"]/div[@id="droppable"]          Drop here
-    drag and drop                       //div[@id="acceptable"]         //div[@class="accept-drop-container"]/div[@id="droppable"]
-    ${element_after_background}         Get CSS Property Value          //div[@class="accept-drop-container"]/div[@id="droppable"]          background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    drag and drop by offset             //div[@id="acceptable"]          -200     0
-    ${position_after}                   Get CSS Property Value          //div[@id="acceptable"]                                             left
-    should be equal as strings          ${position_after}               153px
-    ${element_after_background_2}       Get CSS Property Value          //div[@id="simpleDropContainer"]/div[@id="droppable"]               background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    element text should be              //div[@class="accept-drop-container"]/div[@id="droppable"]                                          Dropped!
+    Open tab                            ${btn_tab_accept}
+    Get background color before drop    ${box_tab_accept}
+    Verify text before drop             ${box_text_tab_accept}          ${drop_here}
+    Drag and drop                       ${acceptable_el_tab_accept}     ${box_tab_accept}
+    Verify text after drop              ${box_text_tab_accept}          ${dropped}
+    Get background color after drop     ${box_tab_accept}
+    Verify color changing               ${element_before_background}    ${element_after_background}
+    Get background color before drop    ${box_tab_accept}
+    drag and drop by offset             ${acceptable_el_tab_accept}      -200     0
+    Verify element position             ${acceptable_el_tab_accept}     153px
+    Get background color after drop     ${box_tab_accept}
+    Verify color is not changing        ${element_before_background}    ${element_after_background}
 
 Check whether OUTER DROPABLE not greedy element changes its condition when user inserts DRAG ME element in OUTER DROPABLE, in PREVENT PROPOGATION tab
-    click element                       //a[text()='Prevent Propogation']
-    element attribute value should be   //a[text()='Prevent Propogation']                                       aria-selected               true
-    ${element_before_background}        Get CSS Property Value          //div[@id="notGreedyDropBox"]           background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    drag and drop                       //div[@id="dragBox"]            //div[@id="notGreedyDropBox"]/p
-    ${element_after_background}         Get CSS Property Value          //div[@id="notGreedyDropBox"]           background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    ${element_inner_background}         Get CSS Property Value          //div[@id="notGreedyInnerDropBox"]      background-color
-    should be equal as strings          ${element_inner_background}     rgba(0, 0, 0, 0)
+    Open tab                            ${btn_tab_prevent}
+    Get background color before drop    ${box_not_gr_dropbox_tab_prevent}
+    Verify text before drop             ${box_text_not_gr_dropbox_tab_prevent}          ${outer_drop}
+    Drag and drop                       ${draggable_el_tab_prevent}                     ${box_not_gr_dropbox_tab_prevent}
+    Verify text after drop              ${box_text_not_gr_dropbox_tab_prevent}          ${dropped}
+    Get background color after drop     ${box_not_gr_dropbox_tab_prevent}
+    Verify color changing               ${element_before_background}                    ${element_after_background}
 
 Check whether OUTER DROPABLE not greedy and INNER DROPABLE not greedy elements change their condition when user inserts DRAG ME element in INNER DROPABLE, in PREVENT PROPOGATION tab
-    click element                       //a[text()='Prevent Propogation']
-    element attribute value should be   //a[text()='Prevent Propogation']                                       aria-selected               true
-    ${element_before_outer}             Get CSS Property Value          //div[@id="notGreedyDropBox"]                                       background-color
-    ${element_before_inner}             Get CSS Property Value          //div[@id="notGreedyInnerDropBox"]      background-color
-    should be equal as strings          ${element_before_outer}         rgba(0, 0, 0, 0)
-    should be equal as strings          ${element_before_inner}         rgba(0, 0, 0, 0)
-    drag and drop                       //div[@id="dragBox"]            //div[@id="notGreedyInnerDropBox"]/p
-    ${element_after_outer}              Get CSS Property Value          //div[@id="notGreedyDropBox"]           background-color
-    ${element_after_inner}              Get CSS Property Value          //div[@id="notGreedyInnerDropBox"]      background-color
-    should be equal as strings          ${element_after_outer}          rgba(70, 130, 180, 1)
-    should be equal as strings          ${element_after_inner}          rgba(70, 130, 180, 1)
+    Open tab                            ${btn_tab_prevent}
+    Get background color before drop    ${box_not_gr_inner_dropbox_tab_prevent}
+    Verify text before drop             ${box_text_not_gr_inner_dropbox_tab_prevent}    ${inner_drop}
+    Verify text before drop             ${box_text_not_gr_dropbox_tab_prevent}          ${outer_drop}
+    Drag and drop                       ${draggable_el_tab_prevent}                     ${box_not_gr_inner_dropbox_tab_prevent}
+    Verify text after drop              ${box_text_not_gr_inner_dropbox_tab_prevent}    ${dropped}
+    Verify text after drop              ${box_text_not_gr_dropbox_tab_prevent}          ${dropped}
+    Get background color after drop     ${box_not_gr_inner_dropbox_tab_prevent}
+    Verify color changing               ${element_before_background}                    ${element_after_background}
 
 Check whether INNER DROPABLE greedy element changes its condition when user inserts DRAG ME element in OUTER DROPABLE, in PREVENT PROPOGATION tab
-    click element                       //a[text()='Prevent Propogation']
-    element attribute value should be   //a[text()='Prevent Propogation']                                       aria-selected               true
-    ${element_before_background}        Get CSS Property Value          //div[@id="greedyDropBoxInner"]         background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    drag and drop                       //div[@id="dragBox"]            //div[@id="greedyDropBoxInner"]/p
-    ${element_after_background}         Get CSS Property Value          //div[@id="greedyDropBoxInner"]         background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    ${element_inner_background}         Get CSS Property Value          //div[@id="greedyDropBox"]              background-color
-    should be equal as strings          ${element_inner_background}     rgba(0, 0, 0, 0)
+    Open tab                            ${btn_tab_prevent}
+    Get background color before drop    ${box_not_gr_inner_dropbox_tab_prevent}
+    Verify text before drop             ${box_text_not_gr_dropbox_tab_prevent}      ${outer_drop}
+    Drag and drop                       ${draggable_el_tab_prevent}                 ${box_not_gr_dropbox_tab_prevent}
+    Verify text after drop              ${box_text_not_gr_dropbox_tab_prevent}      ${dropped}
+    Get background color after drop     ${box_not_gr_inner_dropbox_tab_prevent}
+    Verify color changing               ${element_before_background}                ${element_after_background}
 
 Check whether OUTER DROPABLE greedy element changes its condition when user inserts DRAG ME element in OUTER DROPABLE, in PREVENT PROPOGATION tab
-    click element                       //a[text()='Prevent Propogation']
-    element attribute value should be   //a[text()='Prevent Propogation']                                       aria-selected               true
-    ${element_before_background}        Get CSS Property Value          //div[@id="greedyDropBox"]              background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    drag and drop                       //div[@id="dragBox"]            //div[@id="greedyDropBox"]/p
-    ${element_after_background}         Get CSS Property Value          //div[@id="greedyDropBox"]              background-color
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    ${element_inner_background}         Get CSS Property Value          //div[@id="greedyDropBoxInner"]         background-color
-    should be equal as strings          ${element_inner_background}     rgba(0, 0, 0, 0)
+    Open tab                            ${btn_tab_prevent}
+    Get background color before drop    ${box_gr_dropbox_tab_prevent}
+    Verify text before drop             ${box_text_not_gr_dropbox_tab_prevent}  ${outer_drop}
+    Drag and drop                       ${draggable_el_tab_prevent}             ${box_text_gr_dropbox_tab_prevent}
+    Verify text after drop              ${box_text_gr_dropbox_tab_prevent}      ${dropped}
+    Get background color after drop     ${box_gr_dropbox_tab_prevent}
+    Verify color changing               ${element_before_background}            ${element_after_background}
 
 Check whether DROP HERE element changes its condition when user inserts NOT REVERT element in DROP HERE, in REVERT DRAGABLE tab
-    click element                       //a[text()='Revert Draggable']
-    element attribute value should be   //a[text()='Revert Draggable']                                          aria-selected               true
-    ${element_before_background}        Get CSS Property Value          //div[@class="revertable-drop-container"]/div[@id="droppable"]      background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    drag and drop                       //div[@id="notRevertable"]      //div[@class="revertable-drop-container"]/div[@id="droppable"]
-    ${element_after_background}         Get CSS Property Value          //div[@class="revertable-drop-container"]/div[@id="droppable"]      background-color
-    element text should be              //div[@class="revertable-drop-container"]/div[@id="droppable"]/p         Dropped!
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
+    Open tab                            ${btn_tab_revert}
+    Get background color before drop    ${box_tab_revertable}
+    Verify text before drop             ${box_text_tab_revertable}              ${drop_here}
+    Drag and drop                       ${notrevertable_el_tab_revertable}      ${box_tab_revertable}
+    Verify text after drop              ${box_text_tab_revertable}              ${dropped}
+    Get background color after drop     ${box_tab_revertable}
+    Verify color changing               ${element_before_background}            ${element_after_background}
 
 Check whether DROP HERE element changes its condition when user inserts WILL REVERT element in DROP HERE, in REVERT DRAGABLE tab
-    click element                       //a[text()='Revert Draggable']
-    element attribute value should be   //a[text()='Revert Draggable']                                          aria-selected               true
-    ${element_before_background}        Get CSS Property Value          //div[@class="revertable-drop-container"]/div[@id="droppable"]      background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    drag and drop                       //div[@id="revertable"]         //div[@class="revertable-drop-container"]/div[@id="droppable"]
-    ${element_after_background}         Get CSS Property Value          //div[@class="revertable-drop-container"]/div[@id="droppable"]       background-color
-    element text should be              //div[@class="revertable-drop-container"]/div[@id="droppable"]/p         Dropped!
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
+    Open tab                            ${btn_tab_revert}
+    Get background color before drop    ${box_tab_revertable}
+    Verify text before drop             ${box_text_tab_revertable}              ${drop_here}
+    Drag and drop                       ${revertable_el_tab_revertable}         ${box_tab_revertable}
+    Verify text after drop              ${box_text_tab_revertable}              ${dropped}
+    Get background color after drop     ${box_tab_revertable}
+    Verify color changing               ${element_before_background}            ${element_after_background}
 
 Check whether WILL REVERT element comes out of the DROP HERE element, in REVER DRAGABLE tab
-    click element                       //a[text()='Revert Draggable']
-    element attribute value should be   //a[text()='Revert Draggable']                                          aria-selected               true
-    ${element_before_position}          Get CSS Property Value          //div[@id="revertable"]                 left
-    should be equal as strings          ${element_before_position}      0px
-    ${element_before_background}        Get CSS Property Value          //div[@class="revertable-drop-container"]/div[@id="droppable"]      background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    drag and drop                       //div[@id="revertable"]         //div[@class="revertable-drop-container"]/div[@id="droppable"]
-    ${element_after_background}         Get CSS Property Value          //div[@class="revertable-drop-container"]/div[@id="droppable"]      background-color
-    element text should be              //div[@class="revertable-drop-container"]/div[@id="droppable"]/p                                    Dropped!
-    sleep                               1
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    ${element_before_position}          Get CSS Property Value          //div[@id="revertable"]                 left
-    should be equal as strings          ${element_before_position}      0px
+    Open tab                            ${btn_tab_revert}
+    Get element position before drop    ${revertable_el_tab_revertable}
+    Verify text before drop             ${box_text_tab_revertable}              ${drop_here}
+    Drag and drop                       ${revertable_el_tab_revertable}         ${box_tab_revertable}
+    Verify text after drop              ${box_text_tab_revertable}              ${dropped}
+    Get element position after drop     ${revertable_el_tab_revertable}
+    Verify position is not changing     ${position_before}                      ${position_after}
 
 Check whether NOT REVERT element doesnt come out of the DROP HERE element, in REVER DRAGABLE tab
-    click element                       //a[text()='Revert Draggable']
-    element attribute value should be   //a[text()='Revert Draggable']                                          aria-selected               true
-    ${element_before_position}          Get CSS Property Value          //div[@id="notRevertable"]              left
-    should be equal as strings          ${element_before_position}      0px
-    ${element_before_background}        Get CSS Property Value          //div[@class="revertable-drop-container"]/div[@id="droppable"]      background-color
-    should be equal as strings          ${element_before_background}    rgba(0, 0, 0, 0)
-    drag and drop                       //div[@id="notRevertable"]      //div[@class="revertable-drop-container"]/div[@id="droppable"]
-    ${element_after_background}         Get CSS Property Value          //div[@class="revertable-drop-container"]/div[@id="droppable"]      background-color
-    element text should be              //div[@class="revertable-drop-container"]/div[@id="droppable"]/p        Dropped!
-    should be equal as strings          ${element_after_background}     rgba(70, 130, 180, 1)
-    ${element_before_position}          Get CSS Property Value          //div[@id="notRevertable"]              left
-    should be equal as strings          ${element_before_position}      353px
+    Open tab                            ${btn_tab_revert}
+    Get element position before drop    ${notrevertable_el_tab_revertable}
+    Verify text before drop             ${box_text_tab_revertable}              ${drop_here}
+    Drag and drop                       ${notrevertable_el_tab_revertable}      ${box_tab_revertable}
+    Verify text after drop              ${box_text_tab_revertable}              ${dropped}
+    Get element position after drop     ${notrevertable_el_tab_revertable}
+    Verify position changing            ${position_before}                      ${position_after}
